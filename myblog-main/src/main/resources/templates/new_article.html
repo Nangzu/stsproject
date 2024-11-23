@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/header.css">
+	<title>BLOGHOME</title>
+</head>
+
+<body>
+	<div th:insert="~{header::header}"></div>
+	<div class="new_article">
+		<h3>게시물 글 작성</h3>
+		<form action="#" th:action="@{/bbs/add}" th:object="${article}" method="post">
+			<p>제목: </p>
+			<p><input type="text" th:field="*{title}" /></p>
+			<p>내용: </p>
+			<p><input type="hidden" th:field="*{body}" id="content" /></p>
+			<div contenteditable="true" id="editor" style="width: 70%; min-height: 30vh; border: 1px solid black;">
+
+			</div>
+			<p>
+				<button class="btnSave" id="submitButton">등록</button>
+				<input type="reset" value="취소" onclick="location.href='/bbs'" />
+			</p>
+		</form>
+	</div>
+</body>
+
+<script>
+	const submitButton = document.getElementById('submitButton');
+
+	submitButton.addEventListener('click', function (event) {
+		const titleContent = document.querySelector('input[type="text"]').value;
+		if (titleContent.length > 50) {
+			alert('제목은 50자를 초과할 수 없습니다.');
+			event.preventDefault();
+			return;
+		}
+
+		// 폼 제출 전 작업 (예: 편집기 내용 숨겨진 필드에 복사)
+		const editorContent = document.getElementById('editor').innerHTML;
+		document.getElementById('content').value = editorContent;
+
+		// 내용이 65000자를 초과하면 폼 제출 중단
+		if (editorContent.length > 65000) {
+			alert('게시물의 내용은 65000자를 초과할 수 없습니다.');
+			event.preventDefault();
+			return;
+		}
+
+		// 폼 제출
+		form.submit();
+	});
+</script>
+
+</html>
