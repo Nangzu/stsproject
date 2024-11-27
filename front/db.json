@@ -1,0 +1,48 @@
+
+{
+    "summary": {
+      "creditScore": 85,
+      "topCategory": "쇼핑",
+      "recentTransactions": [
+        { "amount": -10000, "type": "지출", "category": "쇼핑" },
+        { "amount": -20000, "type": "지출", "category": "식비" },
+        { "amount": -15000, "type": "지출", "category": "교통" },
+        { "amount": -15000, "type": "지출", "category": "기타" }
+      ],
+      "totalSpentThisMonth": 1557
+    },
+    "products": {
+    "Deposit": [
+      { "name": "정기예금 1", "interestRate": "3.5%" },
+      { "name": "정기예금 2", "interestRate": "3.2%" },
+      { "name": "정기예금 3", "interestRate": "3.8%" }
+    ],
+    "Savings": [
+      { "name": "적금 상품 1", "interestRate": "3.0%" },
+      { "name": "적금 상품 2", "interestRate": "3.2%" },
+      { "name": "적금 상품 3", "interestRate": "3.1%" }
+    ],
+    "Loans": [
+      { "name": "주택담보대출", "interestRate": "2.5%" },
+      { "name": "개인신용대출", "interestRate": "3.7%" },
+      { "name": "사업자대출", "interestRate": "4.1%" }
+    ],
+    "PensionSavings": [
+        { "name": "연금저축1", "interestRate": "2.5%" },
+        { "name": "연금저축2", "interestRate": "3.7%" },
+        { "name": "연금저축3", "interestRate": "4.1%" }
+      ]
+   },
+   "calendar": {
+      "transactions": [
+      { "date": "2024-11-01", "type": "지출", "amount": -10000, "category": "쇼핑" },
+      { "date": "2024-11-03", "type": "지출", "amount": -20000, "category": "식비" },
+      { "date": "2024-11-07", "type": "지출", "amount": -15000, "category": "교통" },
+      { "date": "2024-11-10", "type": "지출", "amount": -15000, "category": "기타" },
+      { "date": "2024-11-15", "type": "수입", "amount": 50000, "category": "급여" },
+      { "date": "2024-11-20", "type": "수입", "amount": 30000, "category": "투자수익" }
+    ]
+  }
+
+
+}

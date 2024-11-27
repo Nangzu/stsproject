@@ -1,0 +1,113 @@
+.html, body{
+    min-width: 600px; /* 창의 최소 너비 */
+    min-height: 400px; /* 창의 최소 높이 */
+    overflow: hidden; /* 최소 크기 이하로 줄이려는 시도를 방지 */
+    font-family: "NanumGothic";
+}
+  
+.main-layout {
+    display: flex;
+    height: 100vh;
+    
+}
+
+.main-tabs {
+    height: 100%;
+    width: 70px;
+    background-color: #ffffff;
+    border-right: 2px solid #20263255;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.tab-container {
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.logo {
+    margin-bottom: 150%;
+}
+
+.main-tab-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    margin-bottom: 15px;
+    background: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+.avatar-UI-unicorn {
+    width: 30px; /* 로고 크기 조정 */
+    height: auto;
+}
+.tabs {
+    flex-grow: 1; /* 탭 섹션이 나머지 공간을 채우도록 */
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    width: 100%;
+}
+
+.main-tab-button.active {
+    background: #ddd;
+    border-right: 4px solid #007bff;
+}
+
+
+.tab-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+}
+
+
+.content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.sub-tabs {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap:  wrap;
+    background-color: #ffffff;
+    padding: 0px 20px;
+    border-bottom: 2px solid #20263255;
+    gap:10px;
+    min-height: 50px; /* 최소 너비 */
+}
+
+.sub-tab-button {
+    margin-right: 10px;
+    padding: 10px 30px;
+    background: #ffffff;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap; /*텍스트 줄바꿈 방지*/
+    flex-shrink: 0; /*버튼 크기 유지*/
+}
+
+.sub-tab-button.active {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    border-bottom: 4px solid #007bff;
+}
+
+.content {
+    flex: 1;
+ 
+}

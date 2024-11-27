@@ -1,0 +1,124 @@
+.calendar-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* 왼쪽 2: 오른쪽 1 */
+    gap: 20px;
+    padding: 20px;
+}
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .calendar-header h2 {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  
+  .arrow-btn {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    background: transparent;
+    cursor: pointer;
+  }
+  
+  .left-arrow {
+    border-width: 10px 15px 10px 0;
+    border-color: transparent black transparent transparent;
+  }
+  
+  .right-arrow {
+    border-width: 10px 0 10px 15px;
+    border-color: transparent transparent transparent black;
+  }
+
+  .calendar {
+    flex-grow: 1; 
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    overflow-y: auto; /* 스크롤 활성화 */
+    max-height: 80vh; /* 화면 크기에 맞게 제한 */
+}
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 요일도 7열 */
+    gap: 5px; /* 요일 간격 줄이기 */
+    text-align: center;
+    font-weight: bold;
+    background-color: #ffffff; /* 배경 색상으로 구분 */
+  }
+  
+  .weekday {
+    padding: 5px;
+    font-size: 14px; /* 글자 크기 작게 */
+  }
+  
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7열 레이아웃 */
+    gap: 5px;
+    width: 100%;
+  }
+  
+  .calendar-day {
+    border: 1px solid #ccc;
+    text-align: center;
+    min-height: 40px; /* 칸 크기 고정 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 25px;
+  }
+  
+  .calendar-day .transaction {
+    font-size: 12px;
+  }
+  
+  .calendar-day .amount-positive {
+    color: red; /* 수입 */
+  }
+  
+  .calendar-day .amount-negative {
+    color: blue; /* 지출 */
+  }
+  
+  .calendar-day.current-day {
+    background-color: #ffebcc; /* 현재 날짜 강조 */
+    border: 2px solid orange; /* 테두리로 더 강조 */
+  }
+  
+  .calendar-day.selected-day {
+    background-color: #d0e8ff; /* 선택된 날짜 강조 */
+    border: 2px solid #007bff; /* 테두리로 더 강조 */
+  }
+
+.empty-day {
+    background-color: #f9f9f9;
+}
+
+.transaction {
+    font-size: 12px;
+    margin-top: 3px;
+}
+.detail-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    max-height: 80vh;
+    overflow-y: auto; /* 스크롤 가능 */
+}
+
+.detail-item {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
