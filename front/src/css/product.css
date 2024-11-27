@@ -1,0 +1,69 @@
+
+.product-page {
+    padding: 20px;
+    margin-left: 20px;
+}
+
+.product-list h2 {
+    margin-bottom: 20px;
+}
+
+/* 카드 컨테이너 */
+.product-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product-card {
+    width: 200px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #fff;
+}
+
+.product-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.product-card p {
+    font-size: 16px;
+    color: #333;
+}
+
+.detail-tabs {
+    justify-content: space-evenly;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+
+    border-bottom: 2px solid #20263255;
+    gap: 20px;
+    min-height: 50px;
+}
+
+.detail-tab-button {
+    
+
+    padding: 10px 30px;
+    background: #ffffff;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    /*텍스트 줄바꿈 방지*/
+    flex-grow: 1; /* 버튼 크기를 동일하게 확장 */
+    flex-shrink: 0;
+    /*버튼 크기 유지*/
+}
+
+.detail-tab-button.active {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    border-bottom: 4px solid #007bff;
+}
