@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../css/summary.css";
+import { RiMoneyDollarCircleFill } from "react-icons/ri";
+
+
 const SummaryPage = () => {
   const [summaryData, setSummaryData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -66,7 +69,7 @@ const SummaryPage = () => {
           <ul>
             {summaryData.recentTransactions.map((transaction, index) => (
               <li key={index}>
-                <span>💲</span>
+                <span><RiMoneyDollarCircleFill size={28}/></span>
                 <span>{transaction.amount.toLocaleString()} 원</span>
                 <span>{transaction.category}</span>
               </li>

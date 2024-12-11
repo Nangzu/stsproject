@@ -1,0 +1,146 @@
+
+
+.profile-container
+{
+    display: flex;
+    flex-direction: row;
+    padding : 50px;
+    gap : 50px
+}
+
+.profile-description
+{
+    display:flex;
+    flex-direction: column;
+    gap :10px;
+    font-family:"NanumGothic" ;
+}
+.userImage
+{
+    color : #767676;
+}
+
+.userName{
+    font-size : 40px;
+    font-weight: bold;
+
+}
+
+.userEmail{
+    font-size :28px;
+    color: #767676;
+
+}
+
+.profile-option
+{
+    display: flex;
+    flex-direction: row;
+    margin-top : 30px;
+    gap : 40px;
+    font-size : 20px;
+    color: #767676;
+    font-weight: bold;
+}
+
+.custom-link
+{
+    text-decoration: none; /* 밑줄 제거 */
+    color: inherit; /* 텍스트 색상 상속 */
+    cursor: pointer;
+}
+
+.custom-link:hover {
+    color: #202632; /* 원하는 색상 설정 (예: hover 효과) */
+}
+
+.user-content{
+    padding : 10px 80px;
+
+}
+
+.content-name
+{
+    font-size:24px;
+    font-weight: bold;
+
+}
+
+.score-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.score
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.score-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #0064FF;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.score-button:hover {
+    background-color: #0022ff;
+}
+
+
+.button-space
+{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap : 20px;
+}
+.setting-button
+{
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#edit{
+    color: #fff;
+    background-color: #0064FF;
+}
+
+#edit:hover {
+    background-color: #0040c6;
+}
+
+
+#back
+{
+    background-color: #6a6a6a;
+    color: #fff;
+    margin-bottom: 40px;
+}
+#back:hover {
+    background-color: #323232;
+}
+
+#signout
+{
+    background-color: #6a6a6a;
+    color: #fff;
+}
+
+#signout:hover {
+    background-color: #323232;
+}
+

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import "../App.css";
+import "../css/login.css";
 import image from "../assets/images/image.png";
 import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
+import InputField from "../component/InputField";
 
 const Signup = () => {
 
@@ -41,62 +42,45 @@ const Signup = () => {
         <div className="login">
             
             <img className="image" alt="Image" src={image} />
-
             <div className="sign-in-form-desktop">
-            <form onSubmit={signUpHandler}>
-                <div className="sign-in-forms">
-                    <div className="input-configurator">
-                        <label className="text-wrapper-2">이메일</label>
-                        <input
+
+                    <form className="sign-in-forms" onSubmit={signUpHandler}>
+
+                        <InputField
+                            label="이메일"
                             type="email"
                             value={email}
-                            className="regular-input-double"
-                            placeholder="Email"
+                            placeholder="이메일"
                             onChange={(e) => setEmail(e.target.value)}
-                            required
                         />
-                    </div>
-                    <div className="input-configurator">
-                        <label className="text-wrapper-2">이름</label>
-                        <input
+                        <InputField
+                            label="이름"
                             type="text"
                             value={name}
-                            className="regular-input-double"
-                            placeholder="Name"
+                            placeholder="이름"
                             onChange={(e) => setName(e.target.value)}
-                            required
                         />
-                    </div>
-                    <div className="input-configurator">
-                        <label className="text-wrapper-2">비밀번호</label>
-                        <input
+                        <InputField
+                            label="비밀번호"
                             type="password"
                             value={password}
-                            className="regular-input-double"
-                            placeholder="Enter password"
+                            placeholder="비밀번호"
                             onChange={(e) => setPassword(e.target.value)}
-                            required
                         />
-                    </div>
-                    <div className="input-configurator">
-                        <label className="text-wrapper-2">비밀번호 확인</label>
-                        <input
+                        <InputField
+                            label="비밀번호 확인"
                             type="password"
                             value={pwConfirm}
-                            className="regular-input-double"
-                            placeholder="Enter password Confirm"
+                            placeholder="비밀번호 확인"
                             onChange={(e) => setPwConfirm(e.target.value)}
-                            required
                         />
-                    </div>
-                    {passwordError && <p className="error-message">{passwordError}</p>}
-                    <button type="submit" className="primary-button" >회원가입</button>
-                    
-                </div>
-                </form>
-                <div className="sign-up-offer">
-                    <span className="description">계정이 이미 있나요? </span>
-                    <span className="description-2">
+                        {passwordError && <p className="error-message">{passwordError}</p>}
+                        <button type="submit" className="primary-button">회원가입</button>
+                    </form>
+
+
+            <div className="sign-up-offer">
+                    <span className="description">계정이 이미 있나요? &nbsp;
                         <Link to="/">로그인</Link>
                     </span>
                 </div>
