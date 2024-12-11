@@ -1,0 +1,8 @@
+
+### IntelliJ IDEA ###
+.idea
+.smarttomcat
+*.iws
+*.iml
+*.ipr
+root-context.xml
