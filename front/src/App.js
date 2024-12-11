@@ -7,6 +7,9 @@ import SummaryPage from "./pages/Summary";
 import ProductPage from "./pages/Product";
 import UserPatternPage from "./pages/UserPattern";
 import CalendarPage from "./pages/Calendar";
+import MyPagePage from "./pages/MyPage";
+import UserScorePage from "./pages/UserScore";
+import UserEditPage from "./pages/UserEdit";
 
 function App() {
   return (
@@ -20,6 +23,10 @@ function App() {
             <Route path="chart/products" element={<ProductPage />} />
             <Route path="chart/patterns" element={<UserPatternPage />} />
             <Route path="calendar/expenses" element={<CalendarPage />} />
+            <Route path="profile/mypage/*" element={<MyPagePage/>} >
+                    <Route path ="" element={<UserScorePage/>}/>
+                    <Route path ="useredit" element={<UserEditPage/>}/>
+            </Route>
         </Route>
         </Routes>
       </div>

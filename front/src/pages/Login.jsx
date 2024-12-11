@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import avatarUiUnicornV2 from "../assets/images/AvatarUIUnicornV2.png";
 import image from "../assets/images/image.png";
-import "../App.css";
+import "../css/login.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import InputField from "../component/InputField";
+import { IoMailOutline } from "react-icons/io5";
+import { RiLockPasswordLine } from "react-icons/ri";
 
 
 const Login = () => {
@@ -50,33 +53,30 @@ const Login = () => {
                 </div>
 
                 <div className="sign-in-forms">
-                    <div className="input-configurator">
-                        <label className="text-wrapper-2">이메일</label>
-                        <input
-                            type="email"
-                            className="regular-input-double"
-                            value={email}
-                            placeholder="Email"
-                            onChange={(e) => setEmail(e.target.value)}  //상태 업데이트해주기
-                        />
-                    </div>
-                    <div className="input-configurator">
-                        <label className="text-wrapper-2">비밀번호</label>
-                        <input
-                            type="password"
-                            className="regular-input-double"
-                            value={password}
-                            placeholder="Enter password"
-                            onChange={(e) =>setPassword(e.target.value)}
-                        />
-                    </div>
+                    <InputField
+                        Icon icon={IoMailOutline}
+                        iconSize={20}
+                        label="이메일"
+                        type="email"
+                        value={email}
+                        placeholder="이메일"
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <InputField
+                        Icon icon={RiLockPasswordLine}
+                        iconSize={20}
+                        label="비밀번호"
+                        type="password"
+                        value={password}
+                        placeholder="패스워드"
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                     <button className="primary-button" onClick={handleLogin}>로그인</button>
 
                 </div>
 
                 <div className="sign-up-offer">
-                    <span className="description">계정이 없으신가요?  </span>
-                    <span className="description-2">
+                    <span className="description">계정이 없으신가요? &nbsp;
                         <Link to="/signup">회원가입</Link>
                     </span>
                 </div>
@@ -86,4 +86,4 @@ const Login = () => {
 };
 
 
-export default Login; // 'default'로 변경
+export default Login;

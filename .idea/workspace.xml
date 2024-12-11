@@ -5,46 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba69bb2d-2820-4da4-87b4-ea76299f328f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/front/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/db.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/public/logo192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/public/logo512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/App.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/App.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/assets/fonts/NanumGothic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/assets/fonts/NanumGothicBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/assets/fonts/NanumGothicExtraBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/assets/fonts/NanumGothicLight.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/assets/images/AvatarUIUnicornV2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/assets/images/calendar.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/assets/images/chart.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/assets/images/image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/assets/images/profile.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/css/calendar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/css/product.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/css/summary.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/pages/Calendar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/pages/Login.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/pages/Main.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/pages/Product.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/pages/Signup.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/pages/Summary.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/pages/UserPattern.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/reportWebVitals.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/setProxy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/setupTests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/component/InputField.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/component/scoreGraph.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/css/inputfield.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/css/mypage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/pages/MyPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/pages/UserEdit.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/pages/UserScore.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/pages/test.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/css/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/css/calendar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/pages/Calendar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/Calendar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/pages/Signup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/Signup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/pages/Summary.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/Summary.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +66,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -96,42 +79,81 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Lepied&quot;
+  }
+}</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Nangzu/stsproject.git&quot;,
     &quot;accountId&quot;: &quot;2bfb8945-bed1-4eb8-9979-7b2939f2309b&quot;
   }
 }</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2pT5kwuWKJgoGdDFDrt3nCySy6U" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;front__branch&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="stsproject" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="stsproject" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gang\IdeaProjects\stsproject\front\src" />
+    </key>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ba69bb2d-2820-4da4-87b4-ea76299f328f" name="Changes" comment="" />
+      <created>1732777799089</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1732777799089</updated>
+      <workItem from="1732777801432" duration="655000" />
+      <workItem from="1733400983511" duration="7821000" />
+      <workItem from="1733467641821" duration="15117000" />
+      <workItem from="1733491401553" duration="262000" />
+      <workItem from="1733552164945" duration="800000" />
+      <workItem from="1733557736005" duration="2600000" />
+      <workItem from="1733579539168" duration="26787000" />
+      <workItem from="1733707293085" duration="12626000" />
+      <workItem from="1733748563142" duration="51000" />
+      <workItem from="1733788171615" duration="595000" />
+      <workItem from="1733813046284" duration="4256000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

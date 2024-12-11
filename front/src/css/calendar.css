@@ -1,44 +1,48 @@
+/* 캘린더 컨테이너 */
 .calendar-container {
     display: grid;
     grid-template-columns: 2fr 1fr; /* 왼쪽 2: 오른쪽 1 */
     gap: 20px;
     padding: 20px;
 }
+
+/* 캘린더 헤더 */
 .calendar-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 400px;
-    margin: auto;
-  }
-  
-  .calendar-header h2 {
-    flex-grow: 1;
+
+
+}
+
+.calendar-header h2 {
+    margin-right: auto;
+    margin : 0px 20px;
     text-align: center;
     font-size: 1.5rem;
-  }
-  
-  .arrow-btn {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    background: transparent;
-    cursor: pointer;
-  }
-  
-  .left-arrow {
-    border-width: 10px 15px 10px 0;
-    border-color: transparent black transparent transparent;
-  }
-  
-  .right-arrow {
-    border-width: 10px 0 10px 15px;
-    border-color: transparent transparent transparent black;
-  }
+}
 
-  .calendar {
-    flex-grow: 1; 
+.calendar-arrow
+{
+    display: flex;
+    gap : 20px;
+    align-items: center;
+
+}
+.arrow-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+}
+
+/* 캘린더 본체 */
+.calendar {
+    flex-grow: 1;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -47,78 +51,243 @@
     overflow-y: auto; /* 스크롤 활성화 */
     max-height: 80vh; /* 화면 크기에 맞게 제한 */
 }
+
+/* 요일 스타일 */
 .weekdays {
     display: grid;
-    grid-template-columns: repeat(7, 1fr); /* 요일도 7열 */
-    gap: 5px; /* 요일 간격 줄이기 */
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
     text-align: center;
     font-weight: bold;
-    background-color: #ffffff; /* 배경 색상으로 구분 */
-  }
-  
-  .weekday {
+    background-color: #ffffff;
+}
+
+.weekday {
     padding: 5px;
-    font-size: 14px; /* 글자 크기 작게 */
-  }
-  
-  .calendar-grid {
+    font-size: 14px;
+}
+
+/* 날짜 칸 스타일 */
+.calendar-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr); /* 7열 레이아웃 */
+    grid-template-columns: repeat(7, 1fr);
     gap: 5px;
     width: 100%;
-  }
-  
-  .calendar-day {
+}
+
+.calendar-day {
     border: 1px solid #ccc;
     text-align: center;
-    min-height: 40px; /* 칸 크기 고정 */
+    min-height: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-radius: 25px;
-  }
-  
-  .calendar-day .transaction {
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.calendar-day .transaction {
     font-size: 12px;
-  }
-  
-  .calendar-day .amount-positive {
+}
+
+.calendar-day .amount-positive {
     color: red; /* 수입 */
-  }
-  
-  .calendar-day .amount-negative {
+}
+
+.calendar-day .amount-negative {
     color: blue; /* 지출 */
-  }
-  
-  .calendar-day.current-day {
-    background-color: #ffebcc; /* 현재 날짜 강조 */
-    border: 2px solid orange; /* 테두리로 더 강조 */
-  }
-  
-  .calendar-day.selected-day {
-    background-color: #d0e8ff; /* 선택된 날짜 강조 */
-    border: 2px solid #007bff; /* 테두리로 더 강조 */
-  }
+}
+
+.calendar-day.current-day {
+    background-color: #ffebcc;
+    border: 2px solid orange;
+}
+
+.calendar-day.selected-day {
+    background-color: #d0e8ff;
+    border: 2px solid #007bff;
+}
 
 .empty-day {
     background-color: #f9f9f9;
 }
 
+/* 거래 내역 강조 */
 .transaction {
-    font-size: 12px;
-    margin-top: 3px;
-}
-.detail-container {
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    max-height: 80vh;
-    overflow-y: auto; /* 스크롤 가능 */
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 5px;
+    color: #fff;
+    padding: 5px;
+    border-radius: 6px;
 }
 
-.detail-item {
+.amount-positive {
+    background-color: #28a745;
+    color: white;
+}
+
+.amount-negative {
+    background-color: #dc3545;
+    color: white;
+}
+
+.saved-detail-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: #555;
+    margin-top: 2px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* 상세정보 컨테이너 */
+.detail-container {
+    position: relative;
+    border: 2px solid #007bff;
+    padding: 15px 15px 65px 15px;
+    border-radius: 12px;
+    max-height: 80vh;
+    overflow-y: auto;
+
+}
+
+.detail-header {
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #007bff;
     margin-bottom: 10px;
-    padding: 5px;
-    border-bottom: 1px solid #ddd;
+}
+
+/* 상세정보 내용 */
+.detail-content {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    max-height: 0;
+    padding: 0 10px;
+    transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+}
+
+.detail-item.expanded .detail-content {
+    opacity: 1;
+    max-height: 500px;
+    padding: 10px;
+}
+
+/* 타입 선택 버튼 */
+.type-button, .category-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.type-button.active, .category-button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+}
+
+.type-button:hover, .category-button:hover {
+    background-color: #e9ecef;
+}
+
+/* 가격 입력 필드 */
+.detail-input {
+    width: 100%;
+    padding : 10px 0;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    text-indent: 10px;
+}
+/*amount 에서 위아래 화살표 지우는거*/
+.detail-input::-webkit-inner-spin-button,
+.detail-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* 메모 입력창 */
+.memo-input {
+    resize: none;
+    width: 100%;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 10px 0;
+    text-indent: 10px;
+}
+
+.detail-buttons
+{
+    display: flex;
+    gap :10px;
+}
+
+.save-button
+{
+    background-color: #0064FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+    background-color: #014dd5;
+}
+
+.remove-button
+{
+    background-color: #202632;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 추가 버튼 */
+.add-detail-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 25px;
+    background-color: #0064FF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.hidden {
+    display: none;
+}
+
+.add-detail-button:hover {
+    background-color: #014dd5;
+}
+
+/* 상세정보 항목 */
+.detail-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }
