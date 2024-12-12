@@ -116,17 +116,13 @@
 .transaction {
     font-size: 14px;
     font-weight: bold;
-    margin-top: 5px;
-    color: #fff;
-    padding: 5px;
-    border-radius: 6px;
 }
 
-.amount-positive {
+.income {
     color: #007bff;
 }
 
-.amount-negative {
+.expense {
     color: #dc3545;
 }
 

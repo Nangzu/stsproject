@@ -185,8 +185,16 @@ const CalendarPage = () => {
         for (let i = 1; i <= daysInMonth; i++) {
             const date = `${year}-${String(month).padStart(2, "0")}-${String(i).padStart(2, "0")}`;
             const dailyTransactions = transactions.filter((t) => t.date === date);
-            const savedDetails = detailsByDate[date]?.map((detail) => detail.name).filter(Boolean) || [];
-            days.push({ date, transactions: dailyTransactions, savedDetails });
+
+            // 수입과 지출을 계산
+            const totalIncome = dailyTransactions
+                .filter((t) => t.amount > 0)
+                .reduce((acc, t) => acc + t.amount, 0);
+            const totalExpense = dailyTransactions
+                .filter((t) => t.amount < 0)
+                .reduce((acc, t) => acc + Math.abs(t.amount), 0);
+
+            days.push({ date, totalIncome, totalExpense });
         }
 
         return days;
@@ -195,18 +203,23 @@ const CalendarPage = () => {
     const calendarDays = generateCalendarDays();
     const today = new Date().toISOString().split("T")[0];
 
-    const formatAmount = (amount) =>{
-        if (amount >= 100000000){
-            const billions = Math.floor(amount / 100000000);
-            const remaining = Math.floor((amount % 100000000) / 10000); // 남은 금액 중 만 단위
-            return remaining > 0 ? `${billions}억 ${remaining}만` : `${billions}억`;
+    const formatAmount = (amount) => {
+        const absAmount = Math.abs(amount); // 절대값 계산
+        let formattedAmount = "";
+
+        if (absAmount >= 100000000) {
+            const billions = Math.floor(absAmount / 100000000);
+            const remaining = Math.floor((absAmount % 100000000) / 10000); // 남은 금액 중 만 단위
+            formattedAmount = remaining > 0 ? `${billions}억 ${remaining}만` : `${billions}억`;
+        } else if (absAmount >= 10000) {
+            formattedAmount = `${Math.floor(absAmount / 10000)}만`;
+        } else {
+            formattedAmount = absAmount.toString();
         }
-        else if (amount >= 10000)
-        {
-            return `${Math.floor(amount/10000)}만`;
-        }
-        return amount;
-    }
+
+        // 금액이 음수인 경우 "-" 붙여 반환
+        return amount < 0 ? `-${formattedAmount}` : formattedAmount;
+    };
 
     return (
         <div className="calendar-container">
@@ -243,18 +256,19 @@ const CalendarPage = () => {
                                 onClick={() => setSelectedDate(day.date)}
                             >
                                 {day.date && <p>{new Date(day.date).getDate()}</p>}
-
-                                {day.transactions &&
-                                    day.transactions.map((t, i) => (
-                                        <div
-                                            key={i}
-                                            className={`transaction ${
-                                                t.amount > 0 ? "amount-positive" : "amount-negative"
-                                            }`}
-                                        >
-                                            <p>{formatAmount(t.amount)}원</p>
+                                <div className="transaction">
+                                    {/* 수입과 지출 표시 */}
+                                    {day.totalIncome > 0 && (
+                                        <div className="income">
+                                            <p>+{formatAmount(day.totalIncome)}원</p>
                                         </div>
-                                    ))}
+                                    )}
+                                    {day.totalExpense > 0 && (
+                                        <div className="expense">
+                                            <p>-{formatAmount(day.totalExpense)}원</p>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         ))}
                     </div>

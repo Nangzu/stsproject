@@ -84,5 +84,116 @@
       }
     ]
   },
-  "transactions": []
+  "transactions": [
+    {
+      "id": "13fc",
+      "type": "수입",
+      "amount": 12333,
+      "category": "교통",
+      "memo": "123",
+      "saved": true,
+      "name": "수입: 1만원",
+      "date": "2024-12-11"
+    },
+    {
+      "id": "6b9e",
+      "type": "지출",
+      "amount": -555555555,
+      "category": "교통",
+      "memo": "21",
+      "saved": true,
+      "name": "지출: 5억 5555만원",
+      "date": "2024-12-11"
+    },
+    {
+      "id": "aff3",
+      "type": "수입",
+      "amount": 123,
+      "category": "쇼핑",
+      "memo": "",
+      "saved": true,
+      "name": "수입: 123원",
+      "date": "2024-12-11"
+    },
+    {
+      "id": "0601",
+      "type": "수입",
+      "amount": 123,
+      "category": "쇼핑",
+      "memo": "",
+      "saved": true,
+      "name": "수입: 123원",
+      "date": "2024-12-13"
+    },
+    {
+      "id": "ac6d",
+      "type": "지출",
+      "amount": -123,
+      "category": "쇼핑",
+      "memo": "213",
+      "saved": true,
+      "name": "지출: 123원",
+      "date": "2024-12-13"
+    },
+    {
+      "id": "b144",
+      "type": "수입",
+      "amount": 123,
+      "category": "쇼핑",
+      "memo": "123",
+      "saved": true,
+      "name": "수입: 123원",
+      "date": "2024-12-13"
+    },
+    {
+      "id": "9303",
+      "type": "수입",
+      "amount": 123,
+      "category": "교통",
+      "memo": "123",
+      "saved": true,
+      "name": "수입: 123원",
+      "date": "2024-12-13"
+    },
+    {
+      "id": "8ea7",
+      "type": "지출",
+      "amount": -123,
+      "category": "쇼핑",
+      "memo": "123",
+      "saved": true,
+      "name": "지출: 123원",
+      "date": "2024-12-13"
+    },
+    {
+      "id": "afe5",
+      "type": "수입",
+      "amount": 5000,
+      "category": "교통",
+      "memo": "123",
+      "saved": true,
+      "name": "수입: 5000원",
+      "date": "2024-12-11"
+    },
+    {
+      "id": "d4a1",
+      "type": "수입",
+      "amount": 10000,
+      "category": "교통",
+      "memo": "123",
+      "saved": true,
+      "name": "수입: 1만원",
+      "date": "2024-12-11"
+    },
+    {
+      "id": "f802",
+      "type": "수입",
+      "amount": 5000,
+      "category": "저금",
+      "memo": "123",
+      "saved": true,
+      "name": "수입: 5000원",
+      "date": "2024-12-11"
+    }
+  ]
 }
