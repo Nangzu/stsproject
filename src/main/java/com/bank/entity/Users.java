@@ -1,17 +1,24 @@
 package com.bank.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+import java.util.UUID;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "users")
 public class Users {
     @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "VARCHAR2(36)")
     private String id;
+
+    private String email;
     private String pw;
     private String name;
     private BigDecimal score; // NUMBER(5,2)와 매핑
@@ -19,12 +26,12 @@ public class Users {
     // 기본 생성자
     public Users() {}
 
-    public String getId() {
-        return id;
+    public String getEmail() {
+        return email;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPw() {
