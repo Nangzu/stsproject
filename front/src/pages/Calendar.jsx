@@ -34,6 +34,11 @@ const CalendarPage = () => {
         fetchTransactions();
     }, [year, month]);
 
+    //날짜 이동시 수정창 닫기
+    useEffect(() => {
+        setExpandedDetail(null);
+    }, [selectedDate]);
+
     const goToPreviousMonth = () => {
         if (month === 1) {
             setMonth(12);
