@@ -123,13 +123,11 @@
 }
 
 .amount-positive {
-    background-color: #28a745;
-    color: white;
+    color: #007bff;
 }
 
 .amount-negative {
-    background-color: #dc3545;
-    color: white;
+    color: #dc3545;
 }
 
 .saved-detail-name {

@@ -18,8 +18,15 @@ const CalendarPage = () => {
     useEffect(() => {
         const fetchTransactions = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/calendar`);
-                setTransactions(response.data.transactions); // calendar 데이터를 저장
+                const response = await axios.get(`http://localhost:5000/transactions`);
+                const transactionsData = response.data || [];
+                setTransactions(transactionsData); // calendar 데이터를 저장
+                const details = transactionsData.reduce((acc, transaction) => {
+                    if (!acc[transaction.date]) acc[transaction.date] = [];
+                    acc[transaction.date].push(transaction);
+                    return acc;
+                }, {});
+                setDetailsByDate(details); // 각 날짜별 거래 내역 저장
             } catch (error) {
                 console.error("거래 내역을 가져오는 중 오류 발생:", error);
             }
@@ -49,6 +56,11 @@ const CalendarPage = () => {
             alert("날짜를 먼저 선택해주세요.");
             return;
         }
+        // 선택된 날짜에 이미 10개 이상의 상세정보가 있으면 더 이상 추가 X
+        if ((detailsByDate[selectedDate] || []).length >= 10) {
+            alert("한 날짜에 10개 이상의 상세정보를 추가할 수 없습니다.");
+            return;
+        }
         setDetailsByDate((prevDetails) => ({
             ...prevDetails,
             [selectedDate]: [
@@ -71,29 +83,89 @@ const CalendarPage = () => {
         }));
     };
 
-    const saveDetail = (index) => {
+    const saveDetail = async (index) => {
+        if (!selectedDate) return;
+        const detail = detailsByDate[selectedDate][index]
+        if(!detail) return;
+
+        if (!detail.type || !detail.amount || !detail.category) {
+            alert("모든 필수 정보를 입력해주세요.");
+            return;
+        }
+        const name = `${detail.type}: ${formatAmount(detail.amount)}원`;
+
+        const updatedDetail = {
+            ...detail,
+            saved: true,
+            name: name,
+            amount: detail.type === "지출" ? -Math.abs(detail.amount) : Math.abs(detail.amount), // 지출이면 음수 처리
+            date: selectedDate, // 저장 시 날짜를 추가
+        };
+
         setDetailsByDate((prevDetails) => ({
             ...prevDetails,
-            [selectedDate]: prevDetails[selectedDate].map((detail, i) =>
-                i === index
-                    ? {
-                        ...detail,
-                        saved: true,
-                        name: `${detail.type} : ${formatAmount(detail.amount)}원`, // 자동 이름 설정
-                    }
-                    : detail
+            [selectedDate]: prevDetails[selectedDate].map((d, i) =>
+                i === index ? updatedDetail : d
             ),
         }));
+
+        try {
+            // 저장된 데이터인지 확인하여 PUT 요청 또는 POST 요청 수행
+            if (detail.saved) {
+                // 수정 (PUT 요청)
+                await axios.put(`http://localhost:5000/transactions/${detail.id}`, updatedDetail);
+            } else {
+                // 새로 저장 (POST 요청)
+                const response = await axios.post("http://localhost:5000/transactions", updatedDetail);
+                updatedDetail.id = response.data.id; // 새로 생성된 ID를 추가
+            }
+
+            alert("저장되었습니다.");
+
+            // 상태 업데이트
+            setDetailsByDate((prevDetails) => ({
+                ...prevDetails,
+                [selectedDate]: prevDetails[selectedDate].map((d, i) =>
+                    i === index ? { ...updatedDetail, saved: true } : d
+                ),
+            }));
+
+            // 전체 거래 내역 업데이트
+            setTransactions((prevTransactions) => {
+                const filteredTransactions = prevTransactions.filter((t) => t.id !== updatedDetail.id);
+                return [...filteredTransactions, updatedDetail];
+            });
+        } catch (error) {
+            console.error("저장 중 오류 발생:", error);
+            alert("저장에 실패했습니다.");
+        }
+
         setExpandedDetail(null); // 저장 후 토글 닫기
     };
 
-    const removeDetail = (index) => {
+    const removeDetail = async (index) => {
         if (!selectedDate) return;
+        const detail = detailsByDate[selectedDate][index];
+        if (!detail || !detail.id) return; // ID가 없는 경우 방어 코드
 
-        setDetailsByDate((prevDetails) => ({
+        try {
+            // DELETE 요청으로 해당 상세정보 삭제
+            await axios.delete(`http://localhost:5000/transactions/${detail.id}`);
+            alert("삭제되었습니다.");
+
+            // 프론트엔드 상태 업데이트
+            setDetailsByDate((prevDetails) => ({
                 ...prevDetails,
                 [selectedDate]: prevDetails[selectedDate].filter((_, i) => i !== index),
-        }));
+            }));
+            // 삭제 후 거래 내역 업데이트
+            setTransactions((prevTransactions) =>
+                prevTransactions.filter((transaction) => transaction.id !== detail.id)
+            );
+        } catch (error) {
+            console.error("삭제 중 오류 발생:", error);
+            alert("삭제에 실패했습니다.");
+        }
     };
 
     const generateCalendarDays = () => {
@@ -166,12 +238,6 @@ const CalendarPage = () => {
                                 onClick={() => setSelectedDate(day.date)}
                             >
                                 {day.date && <p>{new Date(day.date).getDate()}</p>}
-
-                                {day.savedDetails?.map((name, i) => (
-                                    <div key={i} className="saved-detail-name">
-                                        {name}
-                                    </div>
-                                ))}
 
                                 {day.transactions &&
                                     day.transactions.map((t, i) => (
