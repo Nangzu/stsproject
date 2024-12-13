@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba69bb2d-2820-4da4-87b4-ea76299f328f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/front/src/store/financeStore.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/css/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/css/calendar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/component/scoreGraph.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/component/scoreGraph.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/pages/Calendar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/Calendar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/pages/UserPattern.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/UserPattern.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/pages/UserScore.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/UserScore.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,9 +53,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="JSX File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -132,7 +137,7 @@
       <workItem from="1733748563142" duration="51000" />
       <workItem from="1733788171615" duration="595000" />
       <workItem from="1733813046284" duration="4256000" />
-      <workItem from="1733886210111" duration="30057000" />
+      <workItem from="1733886210111" duration="46360000" />
     </task>
     <servers />
   </component>

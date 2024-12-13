@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from "react";
-import {Chart, ArcElement, Tooltip, Legend, DoughnutController} from "chart.js";
+import { Chart, ArcElement, Tooltip, Legend, DoughnutController } from "chart.js";
 
 Chart.register(ArcElement, Tooltip, Legend, DoughnutController);
 
-const ScoreGraph = ({score}) => {
+const ScoreGraph = ({ data, labels, colors, title, centerText }) => {
     const chartRef = useRef(null);
-    const chartInstance = useRef(null);  // 차트 인스턴스를 저장할 변수
+    const chartInstance = useRef(null);
 
     useEffect(() => {
         if (chartInstance.current) {
@@ -16,17 +16,17 @@ const ScoreGraph = ({score}) => {
         chartInstance.current = new Chart(ctx, {
             type: "doughnut",
             data: {
-                labels: ["Score", "Remaining"],
+                labels: labels,
                 datasets: [
                     {
-                        data: [score, 1000 - score], // 점수와 나머지 값
-                        backgroundColor: ["#FF9999", "#DDDDDD"], // 그래프 색상
+                        data: data,
+                        backgroundColor: colors,
                         borderWidth: 0, // 테두리 없애기
                     },
                 ],
             },
             options: {
-                rotation: -105, // 그래프 시작 각도 
+                rotation: -105, // 그래프 시작 각도
                 circumference: 210, // 그려지는 정도
                 cutout: "70%", // 가운데 비우기
                 plugins: {
@@ -39,17 +39,18 @@ const ScoreGraph = ({score}) => {
                 },
             },
         });
-        // 컴포넌트 언마운트 시 차트 인스턴스 정리
+
         return () => {
             if (chartInstance.current) {
                 chartInstance.current.destroy();
             }
         };
-    }, [score]);  // score가 변경될 때마다 차트도 변경
+    }, [data, labels, colors]); // 데이터가 변경될 때마다 차트 업데이트
+
     return (
-        <div style={{position: "relative", width: "300px", height: "300px"}}>
+        <div style={{ position: "relative", width: "300px", height: "300px" }}>
             <canvas ref={chartRef}></canvas>
-            {/* 점수와 등급 표시 */}
+            {/* 중앙 텍스트 표시 */}
             <div
                 style={{
                     position: "absolute",
@@ -59,8 +60,16 @@ const ScoreGraph = ({score}) => {
                     textAlign: "center",
                 }}
             >
-                <div style={{fontSize: "26px", fontWeight: "bold", margin:5}}>1등급</div>
-                <div style={{fontSize: "26px", fontWeight: "bold"}}>{score}점</div>
+                {title && (
+                    <div style={{ fontSize: "26px", fontWeight: "bold", margin: 5 }}>
+                        {title}
+                    </div>
+                )}
+                {centerText && (
+                    <div style={{ fontSize: "26px", fontWeight: "bold" }}>
+                        {centerText}
+                    </div>
+                )}
             </div>
         </div>
     );

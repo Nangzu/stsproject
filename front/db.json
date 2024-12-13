@@ -96,16 +96,6 @@
       "date": "2024-12-11"
     },
     {
-      "id": "6b9e",
-      "type": "지출",
-      "amount": -555555555,
-      "category": "교통",
-      "memo": "21",
-      "saved": true,
-      "name": "지출: 5억 5555만원",
-      "date": "2024-12-11"
-    },
-    {
       "id": "aff3",
       "type": "수입",
       "amount": 123,
@@ -176,16 +166,6 @@
       "date": "2024-12-11"
     },
     {
-      "id": "d4a1",
-      "type": "수입",
-      "amount": 10000,
-      "category": "교통",
-      "memo": "123",
-      "saved": true,
-      "name": "수입: 1만원",
-      "date": "2024-12-11"
-    },
-    {
       "id": "f802",
       "type": "수입",
       "amount": 5000,
@@ -194,6 +174,46 @@
       "saved": true,
       "name": "수입: 5000원",
       "date": "2024-12-11"
+    },
+    {
+      "id": "b4ee",
+      "type": "수입",
+      "amount": 44,
+      "category": "저금",
+      "memo": "123",
+      "saved": true,
+      "name": "수입: 44원",
+      "date": "2024-12-08"
+    },
+    {
+      "id": "dd37",
+      "type": "수입",
+      "amount": 500,
+      "category": "교통",
+      "memo": "123",
+      "saved": true,
+      "name": "수입: 500원",
+      "date": "2024-12-08"
+    },
+    {
+      "id": "16b7",
+      "type": "지출",
+      "amount": -100000,
+      "category": "저금",
+      "memo": "123",
+      "saved": true,
+      "name": "지출: 10만원",
+      "date": "2024-12-08"
+    },
+    {
+      "id": "5e37",
+      "type": "지출",
+      "amount": -22222222,
+      "category": "교통",
+      "memo": "3",
+      "saved": true,
+      "name": "지출: 2222만원",
+      "date": "2024-12-08"
     }
   ]
 }

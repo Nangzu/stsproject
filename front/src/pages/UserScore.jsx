@@ -6,7 +6,7 @@ const UserScorePage = () => {
     const [score,setScore] =useState(0);
 
     const handleMeasureScore = () => {
-        // 신용점수 측정 로직 아마 Ajax?
+        // 신용점수 측정 로직 넣어야됨. 아니면 점수받아오는거 넣던지.
 
         setScore(870);
     };
@@ -15,7 +15,13 @@ const UserScorePage = () => {
             <div className="score">
                 <div className="content-name">신용점수</div>
                 <div>
-                    <ScoreGraph score={score}/>
+                    <ScoreGraph
+                        data={[score, 1000 - score]}
+                        labels={["Score", "Remaining"]}
+                        colors={["#FF9999", "#DDDDDD"]}
+                        title="1등급"
+                        centerText={`${score}점`}
+                    />
                 </div>
                 <form>
                     <button
