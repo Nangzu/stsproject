@@ -1,0 +1,89 @@
+.user-pattern-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 30px;
+}
+
+.graph-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 중앙 정렬 */
+    justify-content: center; /* 중앙 정렬 */
+}
+
+.graph-section h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #333;
+    margin-bottom: 70px;
+    text-align: left;
+}
+
+.average-spending {
+    font-size: 16px;
+    color: #555;
+    font-weight: 500;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.legend-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 중앙 정렬 */
+    justify-content: center; /* 중앙 정렬 */
+}
+
+.legend-list {
+    display: flex; /* flex로 설정 */
+    justify-content: center; /* 범례를 가로로 중앙 정렬 */
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.legend-list-item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* 각 범례 항목 사이의 간격을 늘림 */
+    font-size: 16px;
+    color: #333;
+}
+
+.legend-color-box {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.legend-section, .graph-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 중앙 정렬 */
+    align-items: center; /* 중앙 정렬 */
+}
+
+.bar-chart {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+}
+
+.score-graph-center-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.graph-gap {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
