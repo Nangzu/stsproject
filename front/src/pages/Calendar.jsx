@@ -80,7 +80,7 @@ const CalendarPage = () => {
             return;
         }
 
-        const newDetail = { type: "수입", amount: "", category: "", memo: "", saved: false };
+        const newDetail = { division: "수입", amount: "", category: "", memo: "", saved: false };
         setDetailsByDate((prevDetails) => ({
             ...prevDetails,
             [selectedDate]: [
@@ -108,17 +108,17 @@ const CalendarPage = () => {
         const detail = detailsByDate[selectedDate][index]
         if(!detail) return;
 
-        if (!detail.type || !detail.amount || !detail.category) {
+        if (!detail.division || !detail.amount || !detail.category) {
             alert("모든 필수 정보를 입력해주세요.");
             return;
         }
-        const name = `${detail.type}: ${formatAmount(detail.amount)}원`;
+        const name = `${detail.division}: ${formatAmount(detail.amount)}원`;
 
         const updatedDetail = {
             ...detail,
             saved: true,
             name: name,
-            amount: detail.type === "지출" ? -Math.abs(detail.amount) : Math.abs(detail.amount), // 지출이면 음수 처리
+            amount: detail.division === "지출" ? -Math.abs(detail.amount) : Math.abs(detail.amount), // 지출이면 음수 처리
             date: selectedDate, // 저장 시 날짜를 추가
         };
 
@@ -302,14 +302,14 @@ const CalendarPage = () => {
                                         {/* 수입/지출 버튼 */}
                                         <div className="detail-type-buttons">
                                             <button
-                                                className={`type-button ${detail.type === "수입" ? "active" : ""}`}
-                                                onClick={() => updateDetail(index, "type", "수입")}
+                                                className={`type-button ${detail.division === "수입" ? "active" : ""}`}
+                                                onClick={() => updateDetail(index, "division", "수입")}
                                             >
                                                 수입
                                             </button>
                                             <button
-                                                className={`type-button ${detail.type === "지출" ? "active" : ""}`}
-                                                onClick={() => updateDetail(index, "type", "지출")}
+                                                className={`type-button ${detail.division === "지출" ? "active" : ""}`}
+                                                onClick={() => updateDetail(index, "division", "지출")}
                                             >
                                                 지출
                                             </button>

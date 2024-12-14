@@ -36,6 +36,9 @@ const ScoreGraph = ({ data, labels, colors, title, centerText }) => {
                     tooltip: {
                         enabled: false, // 툴팁 숨기기
                     },
+                    datalabels: {
+                        display: false, // 데이터 라벨 숨기기 (각 범위별 값 숨기기)
+                    },
                 },
             },
         });

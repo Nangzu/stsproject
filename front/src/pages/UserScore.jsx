@@ -1,14 +1,33 @@
 import "../css/mypage.css";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import ScoreGraph from "../component/scoreGraph";
+import axios from "axios";
+import useUserStore from "../store/userStore";
 
 const UserScorePage = () => {
     const [score,setScore] =useState(0);
+    const { userInfo, fetchUserInfo } = useUserStore();
+    
+    // 페이지가 처음 로드될 때 로그인된 유저 정보를 가져오기
+    useEffect(() => {
+        if (!userInfo) {  // userInfo가 없다면 유저 정보를 가져오기
+            fetchUserInfo();
+        }
+        //setScore(userInfo.data.score)
+    }, [userInfo, fetchUserInfo]);
 
-    const handleMeasureScore = () => {
-        // 신용점수 측정 로직 넣어야됨. 아니면 점수받아오는거 넣던지.
-
-        setScore(870);
+    const  handleMeasureScore = async () => {
+        if (!userInfo) {
+            console.error("유저정보가없습니다");
+            return;
+        }
+        try {
+            // 로그인된 유저 ID로 신용점수 측정 API 호출
+            const response = await axios.get(`http://localhost:8080/api/userscore/${userInfo.id}`);
+            setScore(response.data);  // 응답에서 받은 점수를 상태에 저장
+        } catch (error) {
+            console.error("Error fetching score:", error);
+        }
     };
     return (
         <div className="score-container">

@@ -17,17 +17,20 @@ const Login = () => {
         e.preventDefault();
         
         axios
-            .post("http://localhost:8080/", { 
-                email : email,
-                password : password 
+            .post( "http://localhost:8080/api/login", {
+                id : email,
+                pw : password
             },{withCredentials:true}) // 백엔드 URL에 맞게 수정
             .then((res) => {
-                if (res.data === "OK") // 백엔드에서 성공 시 응답 데이터 처리
+                console.log("백엔드 응답 데이터:", res.data); // 백엔드에서 온 응답 확인
+                if (res.data.message === "Login successful") // 백엔드에서 성공 시 응답 데이터 처리
                 {
+                    console.log("로그인 성공");
                     console.log(res.data);
-                    <Link to="/main"></Link>
+                    window.location.href = "/main/chart/summary";
                 }
                 else {
+                    console.log("로그인 실패:", res.data);
                     alert("로그인에 실패했습니다. 다시 시도해주세요.");
                 }
             })

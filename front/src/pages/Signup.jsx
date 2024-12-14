@@ -23,11 +23,11 @@ const Signup = () => {
         setPasswordError("");
 
         axios
-            .post("http://localhost:8080/",
+            .post("http://localhost:8080/api/signup",
                 {
-                    email: email,
+                    id: email,
                     name: name,
-                    password: password,
+                    pw: password,
                 })
             .then((res) => {
                 console.log("회원가입성공", res.data);

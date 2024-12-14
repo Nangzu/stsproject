@@ -1,18 +1,29 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import InputField from "../component/InputField";
 import {BiUser} from "react-icons/bi";
 import {RiLockPasswordLine} from "react-icons/ri";
 import "../css/mypage.css"
 import axios from "axios";
+import useUserStore from "../store/userStore";
 
 const UserEditPage = () => {
     const navigate = useNavigate();
+    const { userInfo, fetchUserInfo } = useUserStore();
 
     // 사용자 입력값 관리
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
+
+    useEffect(() => {
+        // 페이지 로드 시 유저 정보를 가져옵니다.
+        if (!userInfo) {
+            fetchUserInfo();
+        } else {
+            setName(userInfo.name); // 기존 유저 정보로 이름을 설정
+        }
+    }, [userInfo, fetchUserInfo]);
 
     const handleGoBack = () => {
         navigate(-1); // 이전 페이지로 이동
@@ -27,10 +38,14 @@ const UserEditPage = () => {
         }
 
         try {
-            const response = await axios.post("/api/user/edit", {
+            const response =
+                await axios.put("http://localhost:8080/api/profile", {
+                id: userInfo.id,
                 name,
-                password,
-            });
+                pw: password || null, //비번 변경이 있을때만 보내기
+            },
+                { withCredentials: true }
+            );
 
             if (response.status === 200) {
                 alert("정보가 수정되었습니다.");

@@ -5,22 +5,22 @@
     "recentTransactions": [
       {
         "amount": -10000,
-        "type": "지출",
+        "division": "지출",
         "category": "쇼핑"
       },
       {
         "amount": -20000,
-        "type": "지출",
+        "division": "지출",
         "category": "식비"
       },
       {
         "amount": -15000,
-        "type": "지출",
+        "division": "지출",
         "category": "교통"
       },
       {
         "amount": -15000,
-        "type": "지출",
+        "division": "지출",
         "category": "기타"
       }
     ],
@@ -87,7 +87,7 @@
   "transactions": [
     {
       "id": "aff3",
-      "type": "수입",
+      "division": "수입",
       "amount": 123,
       "category": "쇼핑",
       "memo": "",
@@ -97,7 +97,7 @@
     },
     {
       "id": "0601",
-      "type": "수입",
+      "division": "수입",
       "amount": 123,
       "category": "쇼핑",
       "memo": "",
@@ -107,7 +107,7 @@
     },
     {
       "id": "ac6d",
-      "type": "지출",
+      "division": "지출",
       "amount": -123,
       "category": "쇼핑",
       "memo": "213",
@@ -117,7 +117,7 @@
     },
     {
       "id": "b144",
-      "type": "수입",
+      "division": "수입",
       "amount": 123,
       "category": "쇼핑",
       "memo": "123",
@@ -127,7 +127,7 @@
     },
     {
       "id": "9303",
-      "type": "수입",
+      "division": "수입",
       "amount": 123,
       "category": "교통",
       "memo": "123",
@@ -137,7 +137,7 @@
     },
     {
       "id": "8ea7",
-      "type": "지출",
+      "division": "지출",
       "amount": -123,
       "category": "쇼핑",
       "memo": "123",
@@ -147,7 +147,7 @@
     },
     {
       "id": "f802",
-      "type": "수입",
+      "division": "수입",
       "amount": 5000,
       "category": "저금",
       "memo": "123",
@@ -157,7 +157,7 @@
     },
     {
       "id": "b4ee",
-      "type": "수입",
+      "division": "수입",
       "amount": 44,
       "category": "저금",
       "memo": "123",
@@ -167,7 +167,7 @@
     },
     {
       "id": "dd37",
-      "type": "수입",
+      "division": "수입",
       "amount": 500,
       "category": "교통",
       "memo": "123",
@@ -177,7 +177,7 @@
     },
     {
       "id": "504a",
-      "type": "지출",
+      "division": "지출",
       "amount": -4444,
       "category": "교통",
       "memo": "123",
@@ -187,7 +187,7 @@
     },
     {
       "id": "5bfb",
-      "type": "지출",
+      "division": "지출",
       "amount": -4544,
       "category": "저금",
       "memo": "",
@@ -197,7 +197,7 @@
     },
     {
       "id": "c9b3",
-      "type": "지출",
+      "division": "지출",
       "amount": -1233,
       "category": "교통",
       "memo": "123",
@@ -207,7 +207,7 @@
     },
     {
       "id": "54d7",
-      "type": "지출",
+      "division": "지출",
       "amount": -123,
       "category": "저금",
       "memo": "123",
@@ -217,7 +217,7 @@
     },
     {
       "id": "0422",
-      "type": "지출",
+      "division": "지출",
       "amount": -133,
       "category": "저금",
       "memo": "213",
