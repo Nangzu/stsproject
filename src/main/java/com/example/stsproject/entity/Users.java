@@ -1,22 +1,23 @@
 package com.example.stsproject.entity;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import java.math.BigDecimal;
-import java.util.List;
 
-@Getter
-@Setter
 @Entity
-@Table(name = "USERS")
+@Table(name = "users")
 public class Users {
     @Id
     private String id;
     private String pw;
     private String name;
     private BigDecimal score; // NUMBER(5,2)와 매핑
+
+    // 기본 생성자
+    public Users() {}
 
     public String getId() {
         return id;
@@ -49,10 +50,4 @@ public class Users {
     public void setScore(BigDecimal score) {
         this.score = score;
     }
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Transactions> transactions; // 연결된 거래 내역
-
-    public Users() {}
-
 }
