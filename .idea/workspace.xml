@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba69bb2d-2820-4da4-87b4-ea76299f328f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/front/src/css/userpattern.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/stsproject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/stsproject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-11-28__4_02__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-11-28__4_02__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/pages/UserPattern.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/UserPattern.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
