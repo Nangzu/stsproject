@@ -3,9 +3,13 @@ package com.example.stsproject.controller;
 import com.example.stsproject.entity.Users;
 import com.example.stsproject.repository.UserRepository;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 import lombok.extern.slf4j.Slf4j;
@@ -46,28 +50,117 @@ public class UserController {
         return randomScore;
     }
 
-//    @GetMapping("/test")
-//    public int test(){
-//        Random rd = new Random();
-//        int com = 500 + rd.nextInt(401); // 500~900 범위 생성
-//        return com;
-//    }
+    @GetMapping("/test")
+    public int test(){
+        Random rd = new Random();
+        int com = 500 + rd.nextInt(401); // 500~900 범위 생성
+        return com;
+    }
 
-    //db testing
-//    @GetMapping("/contest")
-//    public String contest() {
-//        // 특정 사용자 (parkgw2000)의 score를 조회
-//        String userId = "parkgw2000";
-//
-//        Optional<Users> userOptional = userRepository.findById(userId);
-//
-//        if (userOptional.isPresent()) {
-//            // 사용자 정보가 있으면 score 반환
-//            Users user = userOptional.get();
-//            return "Score of " + userId + ": " + user.getScore();
-//        } else {
-//            // 사용자가 없으면 적절한 메시지 반환
-//            return "User not found";
-//        }
-//    }
+//    db testing
+    @GetMapping("/contest")
+    public String contest() {
+        // 특정 사용자 (parkgw2000)의 score를 조회
+        String userId = "parkgw2000";
+
+        Optional<Users> userOptional = userRepository.findById(userId);
+
+        if (userOptional.isPresent()) {
+            // 사용자 정보가 있으면 score 반환
+            Users user = userOptional.get();
+            return "Score of " + userId + ": " + user.getScore();
+        } else {
+            // 사용자가 없으면 적절한 메시지 반환
+            return "User not found";
+        }
+    }
+
+    @PostMapping("/signup")
+    public ResponseEntity<?> signup(@RequestBody Users user) {
+        if (userRepository.findById(user.getId()).isPresent()) {
+            return ResponseEntity.badRequest().body("Email already exists");
+        }
+
+        userRepository.save(user);
+        return ResponseEntity.ok("Signup successful");
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Map<String, String> credentials, HttpSession session) {
+        String id = credentials.get("id");
+        String pw = credentials.get("pw");
+
+        // 사용자 조회
+        Optional<Users> optionalUser = userRepository.findById(id);
+
+        // 사용자 존재 여부 확인
+        if (optionalUser.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid ID or password");
+        }
+
+        Users user = optionalUser.get();
+
+        // 비밀번호 확인
+        if (!pw.equals(user.getPw())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid ID or password");
+        }
+
+        // 세션에 정보 저장
+        session.setAttribute("id", id);
+        session.setAttribute("name", user.getName());
+
+        // 성공 응답 반환
+        return ResponseEntity.ok(Map.of("message", "Login successful", "name", user.getName()));
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(HttpSession session) {
+        session.invalidate();
+        return ResponseEntity.ok("Logout successful");
+    }
+
+    @GetMapping("/profile")
+    public ResponseEntity<?> getProfile(HttpSession session) {
+        String id = (String) session.getAttribute("id");
+
+        if (id == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login required");
+        }
+
+        Optional<Users> optionalUser = userRepository.findById(id);
+        Users user = optionalUser.get();
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+
+        return ResponseEntity.ok(user);
+    }
+
+    @PutMapping("/profile")
+    public ResponseEntity<?> updateProfile(@RequestBody Users updatedUser, HttpSession session) {
+        String id = (String) session.getAttribute("id");
+
+        if (id == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login required");
+        }
+        Optional<Users> optionalUser = userRepository.findById(id);
+        Users currentUser = optionalUser.get();
+        if (currentUser == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+
+        currentUser.setName(updatedUser.getName());
+        currentUser.setId(updatedUser.getId());
+        if (updatedUser.getPw() != null && !updatedUser.getPw().isEmpty()) {
+            currentUser.setPw(updatedUser.getPw());
+        }
+
+        userRepository.save(currentUser);
+        session.setAttribute("email", currentUser.getId());
+        session.setAttribute("name", currentUser.getName());
+
+        return ResponseEntity.ok("Profile updated successfully");
+    }
+
+
 }
