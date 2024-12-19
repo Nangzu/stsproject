@@ -11,7 +11,6 @@ const SummaryPage = () => {
   const { userInfo, fetchUserInfo } = useUserStore();
   const { transactions, fetchTransactions } = useFinanceStore();
   const [isLoading, setIsLoading] = useState(true);
-  const [score, setScore] = useState(null); // 점수 관리
 
   const calculateTotalSpent = () => {
     return transactions
@@ -43,7 +42,7 @@ const SummaryPage = () => {
   return (
     <div className="summary-page">
       <div className="top-container">
-        <div className="credit-score">
+        <div className="credit-score"  onClick={() => navigate("/main/profile/mypage")} >
           <h3>나의 신용 점수</h3>
           <div className="score">
             {userInfo.score !== null ? (
@@ -57,7 +56,7 @@ const SummaryPage = () => {
           </div>
         </div>
 
-        <div className="top-category">
+        <div className="top-category" onClick={() => navigate("/main/chart/patterns")}>
           <h3>나는 요즘</h3>
           <div className="category">미구현
             <p className="etc">에 많이 써요</p>
@@ -74,7 +73,8 @@ const SummaryPage = () => {
       </div>
 
       <div className="bottom-container">
-        <div className="recent-transactions">
+        <div className="recent-transactions"
+             onClick={() => navigate("/main/calendar/expenses")}>
           <h3>최근 내역</h3>
           <ul>
             {transactions.slice(0, 5).map((transaction, index)  => (

@@ -161,10 +161,51 @@
   }
   
   .add-button:hover {
+
     background-color: #242a31; /* 호버 시 배경색 변경 */
   }
   
   .plus-icon {
     margin: 0; /* 기본 여백 제거 */
   }
+
+
+/* 공통 hover 효과 */
+.credit-score:hover,
+.top-category:hover,
+.summary-menu:hover {
+  color: #ffffff; /* 텍스트 색상 변경 */
+  cursor: pointer; /* 클릭 가능한 요소임을 표시 */
+  transform: scale(1.05); /* 약간 확대 효과 */
+  transition: all 0.3s ease; /* 부드러운 애니메이션 */
+}
+
+/* 개별 hover 효과 */
+.credit-score:hover {
+  background-color: #0047b3;
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* 더 강한 그림자 */
+}
+
+.top-category:hover {
+  background-color: #1a232f;
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* 더 강한 그림자 */
+}
+.summary-menu:hover {
+  background-color: #0047b3;
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* 더 강한 그림자 */
+}
+
+.recent-transactions ul li:hover {
+  background-color: #1e293b; /* 호버 시 배경색 */
+  color: #ffffff; /* 호버 시 텍스트 색상 */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15); /* 가벼운 그림자 */
+}
+
+
+/* 버튼 hover 효과 */
+.add-button:hover {
+  background-color: #242a31; /* 호버 시 배경색 변경 */
+  transform: rotate(90deg) scale(1.1); /* 살짝 확대 및 회전 효과 */
+  transition: all 0.3s ease-in-out; /* 부드러운 애니메이션 */
+}
   
