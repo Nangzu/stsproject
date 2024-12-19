@@ -37,18 +37,4 @@ public class HistoryController {
         }
         return ResponseEntity.ok(histories);
     }
-
-    @PutMapping("/update/{nums}")
-    public ResponseEntity<history> updateHistory(@PathVariable int nums, @RequestBody history updatedHistory) {
-        history history = historyService.updateHistory(nums, updatedHistory);
-        return ResponseEntity.ok(history);
-    }
-
-    @DeleteMapping("/delete/{nums}")
-    public ResponseEntity<String> deleteHistory(@PathVariable int nums) {
-        historyService.deleteHistory(nums);
-        return ResponseEntity.ok("History with ID " + nums + " has been deleted.");
-    }
-
-
 }
