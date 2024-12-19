@@ -4,6 +4,8 @@ import image from "../assets/images/image.png";
 import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
 import InputField from "../component/InputField";
+import {IoMailOutline} from "react-icons/io5";
+import {RiLockPasswordLine} from "react-icons/ri";
 
 const Signup = () => {
 
@@ -47,6 +49,7 @@ const Signup = () => {
                     <form className="sign-in-forms" onSubmit={signUpHandler}>
 
                         <InputField
+                            Icon icon={IoMailOutline}
                             label="이메일"
                             type="email"
                             value={email}
@@ -61,6 +64,7 @@ const Signup = () => {
                             onChange={(e) => setName(e.target.value)}
                         />
                         <InputField
+                            Icon icon={RiLockPasswordLine}
                             label="비밀번호"
                             type="password"
                             value={password}
@@ -68,6 +72,7 @@ const Signup = () => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         <InputField
+                            Icon icon={RiLockPasswordLine}
                             label="비밀번호 확인"
                             type="password"
                             value={pwConfirm}
