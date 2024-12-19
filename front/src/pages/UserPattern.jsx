@@ -14,16 +14,18 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 import useFinanceStore from "../store/financeStore";
 import ScoreGraph from "../component/scoreGraph"; // ScoreGraph 컴포넌트를 import
 import "../css/userpattern.css"; // CSS import
+import { useNavigate } from "react-router-dom";
 
 // Chart.js에 필요한 요소 등록
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement, ChartDataLabels );
 
 const UserPatternPage = () => {
+    const navigate = useNavigate();
     const { transactions, fetchTransactions } = useFinanceStore();
 
     useEffect(() => {
         if (transactions.length === 0) {
-            fetchTransactions(); // 거래 내역을 불러옴
+            fetchTransactions(navigate); // 거래 내역을 불러옴
         }
     }, [transactions, fetchTransactions]);
 

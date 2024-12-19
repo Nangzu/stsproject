@@ -9,7 +9,7 @@ const MyPagePage = () => {
     const navigate = useNavigate();
     useEffect(() => {
         if (!userInfo) {  // 유저 정보가 없다면 API 요청
-            fetchUserInfo();
+            fetchUserInfo(navigate);
         }
     }, [userInfo, fetchUserInfo]);
     const handleLogout = async () => {

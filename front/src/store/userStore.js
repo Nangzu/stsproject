@@ -1,12 +1,13 @@
 import {create} from "zustand";
 import axios from 'axios';
 
-
 const useUserStore = create((set) => ({
+
     userInfo: null,
+
     setUserInfo: (user) => set({ userInfo: user }),
     //유저정보가져오기
-    fetchUserInfo: async () => {
+    fetchUserInfo: async (navigate) => {
         try {
             const response = await axios.get("http://localhost:8080/api/profile", {
                 withCredentials: true, // 세션을 포함해서 요청
@@ -15,9 +16,11 @@ const useUserStore = create((set) => ({
                 set({ userInfo: response.data }); // 유저 정보를 상태에 저장
             } else {
                 console.error("유저를 찾을 수 없거나 인증 실패");
+                navigate("/");
             }
         } catch (error) {
             console.error("Error fetching user info:", error);
+            navigate("/");
         }
     },
     //로그아웃

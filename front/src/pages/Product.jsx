@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../css/product.css";
+import { useNavigate } from "react-router-dom";
 import useUserStore from "../store/userStore";
 
 const ProductPage = () => {
+  const navigate = useNavigate();
+
   const [activeDetailTab, setActiveDetailTab] = useState("Deposit"); // 현재 활성화된 탭
   const [allProductData, setAllProductData] = useState({}); // 전체 상품 데이터
   const [productData, setProductData] = useState([]); // 현재 탭에 해당하는 데이터
@@ -20,7 +23,7 @@ const ProductPage = () => {
   // 페이지가 처음 로드될 때 로그인된 유저 정보를 가져오기
   useEffect(() => {
     if (!userInfo) {  // userInfo가 없다면 유저 정보를 가져오기
-      fetchUserInfo();
+      fetchUserInfo(navigate);
     }
   }, [userInfo, fetchUserInfo]);
 

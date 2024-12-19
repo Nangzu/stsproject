@@ -3,17 +3,19 @@ import React, {useEffect, useState} from "react";
 import ScoreGraph from "../component/scoreGraph";
 import axios from "axios";
 import useUserStore from "../store/userStore";
+import { useNavigate } from "react-router-dom"
 
 const UserScorePage = () => {
+    const navigate = useNavigate();
     const [score,setScore] =useState(0);
     const { userInfo, fetchUserInfo } = useUserStore();
     
     // 페이지가 처음 로드될 때 로그인된 유저 정보를 가져오기
     useEffect(() => {
         if (!userInfo) {  // userInfo가 없다면 유저 정보를 가져오기
-            fetchUserInfo();
+            fetchUserInfo(navigate);
         }
-        //setScore(userInfo.data.score)
+        setScore(userInfo.score)
     }, [userInfo, fetchUserInfo]);
 
     const  handleMeasureScore = async () => {
