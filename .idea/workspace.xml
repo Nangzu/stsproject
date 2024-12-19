@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba69bb2d-2820-4da4-87b4-ea76299f328f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-11-28__4_02__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-11-28__4_02__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/pages/Signup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/Signup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/pages/Calendar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/Calendar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/store/financeStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/store/financeStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/stsproject/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/stsproject/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/stsproject/entity/goods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/stsproject/entity/goods.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +112,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
@@ -157,6 +163,7 @@
       <workItem from="1734195743633" duration="7464000" />
       <workItem from="1734203793895" duration="1000" />
       <workItem from="1734242470504" duration="563000" />
+      <workItem from="1734598296836" duration="3415000" />
     </task>
     <servers />
   </component>

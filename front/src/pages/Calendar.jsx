@@ -30,13 +30,22 @@ const CalendarPage = () => {
 
     //가져온 거래내역 날짜로 그룹화
     useEffect(() => {
-        const details = transactions.reduce((acc, transaction) => {
-            if (!acc[transaction.date]) acc[transaction.date] = [];
-            acc[transaction.date].push(transaction);
-            return acc;
-        }, {});
-        setDetailsByDate(details);
-    }, [transactions]);
+        const fetchAndGroupTransactions = async () => {
+            try {
+                await fetchTransactions();
+                const groupedDetails = transactions.reduce((acc, transaction) => {
+                    const date = transaction.dates; // 서버 데이터의 날짜 필드
+                    if (!acc[date]) acc[date] = [];
+                    acc[date].push(transaction);
+                    return acc;
+                }, {});
+                setDetailsByDate(groupedDetails);
+            } catch (error) {
+                console.error("Failed to fetch transactions:", error);
+            }
+        };
+        fetchAndGroupTransactions();
+    }, [fetchTransactions, transactions]);
 
     useEffect(() => {
         const fetchAndLogTransactions = async () => {
