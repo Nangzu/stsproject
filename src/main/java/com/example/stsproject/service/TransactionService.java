@@ -26,6 +26,7 @@ public class TransactionService {
         transaction.setUser(user);
         transaction.setDescription(transaction.getDescription());
         transaction.setAmount(transaction.getAmount());
+        transaction.setCategory(transaction.getCategory());
 
         // 저장
         return transactionRepository.save(transaction);
