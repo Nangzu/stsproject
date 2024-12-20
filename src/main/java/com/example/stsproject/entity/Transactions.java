@@ -24,6 +24,9 @@ public class Transactions {
     @Column(name = "DESCRIPTION")
     private String description;
 
+    @Column(name = "CATEGORY")
+    private String category;
+
     @Column(name = "AMOUNT")
     private Double amount;
 
@@ -42,9 +45,12 @@ public class Transactions {
     }
 
     public String getDescription(){return description;}
+
+    public String getCategory(){return category;}
     public Double getAmount(){return amount;}
 
     public void setDescription(String description){this.description = description;}
     public void setAmount(Double amount){this.amount = amount;}
+    public void setCategory(String category){this.category = category;}
     public Transactions() {}
 }
