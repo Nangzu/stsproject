@@ -40,6 +40,7 @@ public class Transactions {
     public String getType() {
         return type;
     }
+    public void setType(String type) {this.type = type;}
     public void setUser(Users user) {
         this.user = user;
     }
@@ -49,8 +50,14 @@ public class Transactions {
     public String getCategory(){return category;}
     public Double getAmount(){return amount;}
 
+    public void setDate(LocalDateTime date){this.date = date;}
+
     public void setDescription(String description){this.description = description;}
     public void setAmount(Double amount){this.amount = amount;}
     public void setCategory(String category){this.category = category;}
+
+    public Users getUser() {
+        return user;
+    }
     public Transactions() {}
 }
