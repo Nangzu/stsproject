@@ -52,23 +52,25 @@ public class Transactions {
         return udate;
     }
     public void setUDate(String udate) {this.udate = udate;}
+
+    public LocalDateTime getDate() {return date;}
+    public void setDate(LocalDateTime date){this.date = date;}
+
+
     public void setUser(Users user) {
         this.user = user;
     }
+    public Users getUser() {return user;}
 
     public String getDescription(){return description;}
+    public void setDescription(String description){this.description = description;}
 
     public String getCategory(){return category;}
-    public Double getAmount(){return amount;}
-
-    public void setDate(LocalDateTime date){this.date = date;}
-
-    public void setDescription(String description){this.description = description;}
-    public void setAmount(Double amount){this.amount = amount;}
     public void setCategory(String category){this.category = category;}
 
-    public Users getUser() {
-        return user;
-    }
+
+    public Double getAmount(){return amount;}
+    public void setAmount(Double amount){this.amount = amount;}
+
     public Transactions() {}
 }
