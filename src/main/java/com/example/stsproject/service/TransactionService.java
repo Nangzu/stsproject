@@ -39,6 +39,10 @@ public class TransactionService {
         return transactionRepository.findById(transactionId).orElse(null);
     }
 
+    public List<Transactions> getTransactionsByDateAndUser(String userId, String udate) {
+        return transactionRepository.findByUserIdAndUdate(userId, udate);
+    }
+
     // UPDATE
     public boolean updateTransaction(Long transactionId, Transactions updatedTransaction, String userId) {
         Transactions existingTransaction = transactionRepository.findById(transactionId).orElse(null);
@@ -59,6 +63,10 @@ public class TransactionService {
         if (updatedTransaction.getDescription() != null) {
             existingTransaction.setDescription(updatedTransaction.getDescription());
         }
+        if (updatedTransaction.getUDate() != null) {
+            existingTransaction.setUDate(updatedTransaction.getUDate());
+        }
+
 
         existingTransaction.setDate(LocalDateTime.now());
         transactionRepository.save(existingTransaction);

@@ -33,6 +33,9 @@ public class Transactions {
     @Column(name = "TRANSACTION_DATE")
     private LocalDateTime date = LocalDateTime.now();
 
+    @Column(name = "U_DATE")
+    private String udate;
+
     @ManyToOne
     @JoinColumn(name = "USER_ID", nullable = false)
     private Users user;
@@ -41,6 +44,11 @@ public class Transactions {
         return type;
     }
     public void setType(String type) {this.type = type;}
+
+    public String getUDate() {
+        return udate;
+    }
+    public void setUDate(String udate) {this.udate = udate;}
     public void setUser(Users user) {
         this.user = user;
     }
