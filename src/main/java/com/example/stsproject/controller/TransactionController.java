@@ -28,7 +28,7 @@ public class TransactionController {
             return ResponseEntity.status(401).body("User not logged in");
         }
 
-        if (!transaction.getType().equalsIgnoreCase("income") && !transaction.getType().equalsIgnoreCase("expense")) {
+        if (!transaction.getType().equalsIgnoreCase("수입") && !transaction.getType().equalsIgnoreCase("지출")) {
             return ResponseEntity.badRequest().body("Invalid transaction type. Use 'income' or 'expense'.");
         }
 
