@@ -47,7 +47,7 @@ const UserPatternPage = () => {
     // 최근 6개월 데이터 필터링
     const monthlySpending = transactions.reduce((acc, transaction) => {
         if (transaction.type === "지출") {
-            const transactionDate = new Date(transaction.date);
+            const transactionDate = new Date(transaction.udate);
             const month = `${transactionDate.getFullYear()}-${(transactionDate.getMonth() + 1).toString().padStart(2, "0")}`;
             if (months.includes(month)) {
                 acc[month] = (acc[month] || 0) + transaction.amount;
@@ -68,7 +68,7 @@ const UserPatternPage = () => {
 
     // 이번 달 카테고리별 지출 계산
     const currentMonthTransactions = transactions.filter((transaction) =>
-        transaction.date.startsWith(currentMonthString)
+        transaction.udate.startsWith(currentMonthString)
     );
 
     const categorySpending = currentMonthTransactions.reduce((acc, transaction) => {
@@ -136,7 +136,7 @@ const UserPatternPage = () => {
                                 grid: {display: false},
                                 beginAtZero: true }, // 0부터 시작
                             y: { display: false,
-                                 reverse: true }, // 아래에서 위로 올라가도록 설정
+                                 reverse: false }, // 아래에서 위로 올라가도록 설정
                         },
                         layout: {
                             padding: {

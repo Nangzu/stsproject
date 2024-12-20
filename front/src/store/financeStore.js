@@ -4,7 +4,7 @@ import useUserStore from "./userStore";
 
 
 const useFinanceStore = create((set) => ({
-    transactions: [], // Default value
+    transactions: [],
     incomeTotal: 0,
     expenseTotal: 0,
 
@@ -23,9 +23,14 @@ const useFinanceStore = create((set) => ({
         }
 
         try {
-            const response = await
-                axios.get(`http://localhost:8080/api/history/user/${updatedUserInfo.id}`);
-            set({ transactions: response.data });
+            const response = await axios.get(`http://localhost:8080/api/transactions`, {
+                withCredentials: true, // 세션 정보를 포함
+            });
+            const transactions = response.data;
+
+            // 상태 업데이트 및 콘솔 출력
+            set({ transactions });
+
         } catch (error) {
             console.error("거래정보 불러오기 실패", error);
         }

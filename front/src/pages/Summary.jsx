@@ -11,11 +11,31 @@ const SummaryPage = () => {
   const { userInfo, fetchUserInfo } = useUserStore();
   const { transactions, fetchTransactions } = useFinanceStore();
   const [isLoading, setIsLoading] = useState(true);
+  const [topCategory, setTopCategory] = useState(""); // 추가된 상태
 
   const calculateTotalSpent = () => {
     return transactions
-        .filter((transaction) => transaction.division === "지출")
+        .filter((transaction) => transaction.type === "지출")
         .reduce((total, transaction) => total + transaction.amount, 0); // 금액 합산
+  };
+  // category별 빈도수 계산 함수
+  const getMostFrequentCategory = () => {
+    const categoryCount = {};
+
+    // 거래 내역에서 category 추출하여 빈도수 계산
+    transactions.forEach((transaction) => {
+      if (transaction.category) {
+        categoryCount[transaction.category] = (categoryCount[transaction.category] || 0) + 1;
+      }
+    });
+
+    // 가장 많이 등장하는 category 찾기
+    const mostFrequentCategory = Object.entries(categoryCount).reduce(
+        (max, [category, count]) => (count > max.count ? { category, count } : max),
+        { category: "", count: 0 }
+    );
+
+    return mostFrequentCategory.category;
   };
 
   useEffect(() => {
@@ -24,6 +44,9 @@ const SummaryPage = () => {
         await fetchUserInfo(navigate); // 유저 정보 가져오기
         await fetchTransactions(); // 거래 내역 가져오기
         setIsLoading(false); // 로딩 완료
+
+        const mostFrequentCategory = getMostFrequentCategory();
+        setTopCategory(mostFrequentCategory);
       } catch (error) {
         console.error("데이터 로드 중 오류 발생:", error);
         setIsLoading(false); // 로딩 완료
@@ -42,7 +65,7 @@ const SummaryPage = () => {
   return (
     <div className="summary-page">
       <div className="top-container">
-        <div className="credit-score"  onClick={() => navigate("/main/profile/mypage")} >
+        <div className="credit-score" onClick={() => navigate("/main/profile/mypage")}>
           <h3>나의 신용 점수</h3>
           <div className="score">
             {userInfo.score !== null ? (
@@ -58,8 +81,15 @@ const SummaryPage = () => {
 
         <div className="top-category" onClick={() => navigate("/main/chart/patterns")}>
           <h3>나는 요즘</h3>
-          <div className="category">미구현
-            <p className="etc">에 많이 써요</p>
+          <div className="category">
+            {topCategory ? (
+                <>
+                  {topCategory}
+                  <p className="etc">에 많이 써요</p>
+                </>
+            ) : (
+                "데이터 없음"
+            )}
           </div>
         </div>
         <div className="summary-menu">
@@ -77,12 +107,12 @@ const SummaryPage = () => {
              onClick={() => navigate("/main/calendar/expenses")}>
           <h3>최근 내역</h3>
           <ul>
-            {transactions.slice(0, 5).map((transaction, index)  => (
-              <li key={index}>
-                <span><RiMoneyDollarCircleFill size={28}/></span>
-                <span>{transaction.amount.toLocaleString()} 원</span>
-                <span>{transaction.division}</span>
-                <span>{transaction.date}</span>
+            {transactions.slice(0, 5).map((transaction, index) => (
+                <li key={index}>
+                  <span><RiMoneyDollarCircleFill size={28}/></span>
+                  <span>{transaction.amount.toLocaleString()} 원</span>
+                <span>{transaction.type}</span>
+                <span>{transaction.udate}</span>
               </li>
             ))}
           </ul>
