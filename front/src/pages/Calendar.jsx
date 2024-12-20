@@ -23,37 +23,34 @@ const CalendarPage = () => {
         removeTransaction
     } = useFinanceStore();
 
-    //거래내역 가져오기
+    /*/거래내역 가져오기
     useEffect(() => {
         fetchTransactions();
     }, [fetchTransactions]);
+    */
+
 
     //가져온 거래내역 날짜로 그룹화
     useEffect(() => {
         const fetchAndGroupTransactions = async () => {
             try {
                 await fetchTransactions();
-                const groupedDetails = transactions.reduce((acc, transaction) => {
-                    const date = transaction.dates; // 서버 데이터의 날짜 필드
-                    if (!acc[date]) acc[date] = [];
-                    acc[date].push(transaction);
-                    return acc;
-                }, {});
-                setDetailsByDate(groupedDetails);
+                groupTransactions();
             } catch (error) {
                 console.error("Failed to fetch transactions:", error);
             }
         };
         fetchAndGroupTransactions();
-    }, [fetchTransactions, transactions]);
-
-    useEffect(() => {
-        const fetchAndLogTransactions = async () => {
-            await fetchTransactions();
-            console.log("Fetched transactions:", useFinanceStore.getState().transactions);
-        };
-        fetchAndLogTransactions();
     }, []);
+    const groupTransactions = () => {
+        const groupedDetails = transactions.reduce((acc, transaction) => {
+            const date = transaction.dates; // 서버 데이터의 날짜 필드
+            if (!acc[date]) acc[date] = [];
+            acc[date].push(transaction);
+            return acc;
+        }, {});
+        setDetailsByDate(groupedDetails);
+    };
 
 
     //날짜 이동시 수정창 닫기
@@ -89,7 +86,7 @@ const CalendarPage = () => {
             return;
         }
 
-        const newDetail = { division: "수입", amount: "", category: "", memo: "", saved: false };
+        const newDetail = { division: "수입", amount: "", category: "", memo: "", date: selectedDate };
         setDetailsByDate((prevDetails) => ({
             ...prevDetails,
             [selectedDate]: [
@@ -121,37 +118,29 @@ const CalendarPage = () => {
             alert("모든 필수 정보를 입력해주세요.");
             return;
         }
-        const name = `${detail.division}: ${formatAmount(detail.amount)}원`;
 
         const updatedDetail = {
             ...detail,
-            saved: true,
-            name: name,
             amount: detail.division === "지출" ? -Math.abs(detail.amount) : Math.abs(detail.amount), // 지출이면 음수 처리
-            date: selectedDate, // 저장 시 날짜를 추가
         };
 
-        setDetailsByDate((prevDetails) => ({
-            ...prevDetails,
-            [selectedDate]: prevDetails[selectedDate].map((d, i) =>
-                i === index ? updatedDetail : d
-            ),
-        }));
 
         try {
-            if (detail.saved) {
+            if (detail.id) {
                 await axios.put(`http://localhost:5000/transactions/${detail.id}`, updatedDetail);
                 updateTransaction(updatedDetail);
+                groupTransactions();
             } else {
                 const response = await axios.post("http://localhost:5000/transactions", updatedDetail);
                 updatedDetail.id = response.data.id;
                 addTransaction(updatedDetail);
+                groupTransactions();
             }
 
             setDetailsByDate((prevDetails) => ({
                 ...prevDetails,
                 [selectedDate]: prevDetails[selectedDate].map((d, i) =>
-                    i === index ? { ...updatedDetail, saved: true } : d
+                    i === index ? updatedDetail : d
                 )
             }));
 
@@ -180,6 +169,7 @@ const CalendarPage = () => {
                 ...prevDetails,
                 [selectedDate]: prevDetails[selectedDate].filter((_, i) => i !== index),
             }));
+            groupTransactions();
         } catch (error) {
             console.error("삭제 중 오류 발생:", error);
             alert("삭제에 실패했습니다.");
@@ -304,7 +294,9 @@ const CalendarPage = () => {
                         detailsByDate[selectedDate]?.map((detail, index) => (
                             <div key={index} className={`detail-item ${expandedDetail === index ? 'expanded' : ''}`}>
                                 <div onClick={() => toggleDetailExpand(index)} className="detail-header">
-                                    {detail.saved ? detail.name : `상세정보 ${index + 1}`}
+                                    {detail.division && detail.amount
+                                        ? `${detail.division} ${detail.amount}원`
+                                        : `상세정보 ${index + 1}`}
                                 </div>
                                 {expandedDetail === index && (
                                     <div className="detail-content">
@@ -328,7 +320,7 @@ const CalendarPage = () => {
                                             type="number"
                                             placeholder="금액"
                                             className="detail-input"
-                                            value={detail.amount}
+                                            value={detail.amount || ''}
                                             onChange={(e) => updateDetail(index, "amount", e.target.value)}
                                         />
                                         {/* 카테고리 선택 */}
@@ -350,7 +342,7 @@ const CalendarPage = () => {
                                             type="text"
                                             className="detail-input memo-input"
                                             placeholder="메모"
-                                            value={detail.memo}
+                                            value={detail.memo || ''}
                                             onChange={(e) => updateDetail(index, "memo", e.target.value)}
                                         />
                                         {/* 저장 및 삭제 버튼 */}
