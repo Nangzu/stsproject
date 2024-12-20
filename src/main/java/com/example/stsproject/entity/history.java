@@ -14,7 +14,6 @@ import java.util.Date;
 @Table(name = "history")
 @Getter
 @Setter
-
 public class history {
 
     @Id
@@ -41,6 +40,38 @@ public class history {
     @Column(nullable = false)
     @JsonProperty("dates") // JSON 직렬화 시 매핑
     private Date dates;
+
+    public String getDivision() {
+        return division;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public Date getDates() {
+        return dates;
+    }
+
+    public void setDivision(String division) {
+        this.division = division;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public void setDates(Date dates) {
+        this.dates = dates;
+    }
 
     @Override
     public String toString() {
