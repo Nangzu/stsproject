@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface TransactionRepository extends JpaRepository<Transactions, Long> {
     List<Transactions> findByUserId(String userId); // 특정 사용자의 트랜잭션 조회
+    List<Transactions> findByUserIdAndUdate(String userId, String udate);
 }

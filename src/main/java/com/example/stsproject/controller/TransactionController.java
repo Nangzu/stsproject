@@ -46,6 +46,7 @@ public class TransactionController {
         return ResponseEntity.ok(transactionService.getAllTransactionsByUserId(userId));
     }
 
+
     // READ (단일 트랜잭션 조회)
     @GetMapping("/{transactionId}")
     public ResponseEntity<Transactions> getTransactionById(
@@ -60,6 +61,19 @@ public class TransactionController {
             return ResponseEntity.status(403).build();
         }
         return ResponseEntity.ok(transaction);
+    }
+
+    @GetMapping("/date/{udate}")
+    public ResponseEntity<List<Transactions>> getTransactionsByDate(
+            @PathVariable String udate,
+            HttpSession session) {
+        String userId = (String) session.getAttribute("id");
+        if (userId == null) {
+            return ResponseEntity.status(401).body(null);
+        }
+
+        List<Transactions> transactions = transactionService.getTransactionsByDateAndUser(userId, udate);
+        return ResponseEntity.ok(transactions);
     }
 
     // UPDATE
