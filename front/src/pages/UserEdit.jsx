@@ -56,6 +56,24 @@ const UserEditPage = () => {
             alert("정보 수정에 실패했습니다. 다시 시도해주세요.");
         }
     };
+    const handleDeleteAccount = async () => {
+        if (!window.confirm("정말로 회원 탈퇴하시겠습니까?")) return;
+
+        try {
+            const response = await axios.delete(
+                "http://localhost:8080/api/deleteAccount",
+                { withCredentials: true }
+            );
+
+            if (response.status === 200) {
+                alert("회원탈퇴가 완료되었습니다.");
+                navigate("/"); // 탈퇴 후 메인 페이지로 이동
+            }
+        } catch (error) {
+            console.error("회원탈퇴 요청 실패:", error.response?.data || error.message);
+            alert("회원탈퇴에 실패했습니다. 다시 시도해주세요.");
+        }
+    };
 
     return (
         <div>
@@ -100,7 +118,7 @@ const UserEditPage = () => {
                     정보 수정
                 </button>
                 <button
-                    onClick={handleGoBack}
+                    onClick={handleDeleteAccount}
                     className="setting-button"
                     id = "signout">
                     회원탈퇴

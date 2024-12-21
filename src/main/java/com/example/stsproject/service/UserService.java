@@ -80,4 +80,24 @@ public class UserService {
 
         return "Profile updated successfully";
     }
+    public String deleteAccount(String id, HttpSession session) {
+        if (id == null) {
+            throw new IllegalStateException("Login required");
+        }
+
+        // 사용자 조회
+        Optional<Users> optionalUser = userRepository.findById(id);
+        if (optionalUser.isEmpty()) {
+            throw new IllegalArgumentException("User not found");
+        }
+
+        // 사용자 삭제
+        userRepository.deleteById(id);
+
+        // 세션 무효화
+        session.invalidate();
+
+        return "Account deleted successfully";
+    }
+
 }
