@@ -108,7 +108,7 @@ const ProductPage = () => {
                       <div className="card-front">
                         <h3>{product.b_name}</h3>
                         <p>이율: {product.mrate}</p>
-                        <p>제한: {product.limit}</p>
+                        <p>한도: {product.limit}</p>
                       </div>
                       <div className="card-back">
                         <p>상세: {product.detail}</p>
