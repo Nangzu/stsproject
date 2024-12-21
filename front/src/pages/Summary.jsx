@@ -61,7 +61,7 @@ const SummaryPage = () => {
   }, [transactions]);
 
   if (isLoading) {
-    return <div>로딩중...</div>;
+    return <div></div>;
   }
   if (!userInfo) {
     return <div>유저 정보를 불러올 수 없습니다.</div>;

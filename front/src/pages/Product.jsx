@@ -10,6 +10,8 @@ const ProductPage = () => {
   const [activeDetailTab, setActiveDetailTab] = useState("Deposit"); // 현재 활성화된 탭
   const [allProductData, setAllProductData] = useState({}); // 전체 상품 데이터
   const [productData, setProductData] = useState([]); // 현재 탭에 해당하는 데이터
+  const [flippedCards, setFlippedCards] = useState({}); // 각 카드의 뒤집힘 상태 저장
+
 
   const detailTabs = [
     { id: "Deposit", label: "정기예금" },
@@ -26,6 +28,13 @@ const ProductPage = () => {
       fetchUserInfo(navigate);
     }
   }, [userInfo, fetchUserInfo]);
+
+  const toggleFlip = (index) => {
+    setFlippedCards((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index], // 해당 카드의 뒤집힘 상태를 토글
+    }));
+  };
 
   // 처음에 모든 데이터를 가져옴
   useEffect(() => {
@@ -91,11 +100,19 @@ const ProductPage = () => {
           <div className="product-cards">
             {limitedProductData.length > 0 ? (
                 limitedProductData.map((product, index) => (
-                    <div key={index} className="product-card">
-                      <h3>{product.b_name}</h3>
-                      <p>이율: {product.mrate}</p>
-                      <p>제한: {product.limit}</p>
-                      <p>상세: {product.detail}</p>
+                    <div
+                        key={index}
+                        className={`product-card ${flippedCards[index] ? "flipped" : ""}`}
+                        onClick={() => toggleFlip(index)} // 카드 클릭 시 상태 변경
+                    >
+                      <div className="card-front">
+                        <h3>{product.b_name}</h3>
+                        <p>이율: {product.mrate}</p>
+                        <p>제한: {product.limit}</p>
+                      </div>
+                      <div className="card-back">
+                        <p>상세: {product.detail}</p>
+                      </div>
                     </div>
                 ))
             ) : (
