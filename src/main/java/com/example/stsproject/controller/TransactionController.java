@@ -20,20 +20,20 @@ public class TransactionController {
 
     // CREATE
     @PostMapping
-    public ResponseEntity<String> createTransaction(
+    public ResponseEntity<Transactions> createTransaction(
             @RequestBody Transactions transaction,
             HttpSession session) {
         String userId = (String) session.getAttribute("id");
         if (userId == null) {
-            return ResponseEntity.status(401).body("User not logged in");
+            return ResponseEntity.status(401).body(null); // 사용자 로그인이 안 됐을 경우
         }
 
         if (!transaction.getType().equalsIgnoreCase("수입") && !transaction.getType().equalsIgnoreCase("지출")) {
-            return ResponseEntity.badRequest().body("Invalid transaction type. Use 'income' or 'expense'.");
+            return ResponseEntity.badRequest().body(null); // 유효하지 않은 거래 유형
         }
 
-        transactionService.saveTransaction(transaction, userId);
-        return ResponseEntity.ok("Transaction created successfully");
+        Transactions savedTransaction = transactionService.saveTransaction(transaction, userId); // 저장된 거래 객체
+        return ResponseEntity.ok(savedTransaction); // 저장된 거래 객체를 응답으로 보내기
     }
 
     // READ (사용자의 모든 트랜잭션 조회)

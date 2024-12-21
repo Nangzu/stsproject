@@ -120,13 +120,13 @@ const UserPatternPage = () => {
                         responsive: true,
                         indexAxis: 'x', // 막대 방향을 수평으로 변경
                         plugins: {
-                            legend: { display: false },
-                            tooltip: { enabled: true },
+                            legend: {display: false},
+                            tooltip: {enabled: true},
                             datalabels: {
                                 display: true,
                                 formatter: (value) => formatAmount(value),
                                 color: "black",
-                                font: { weight: "bold" },
+                                font: {weight: "bold"},
                                 align: "end",
                                 anchor: "end",
                             },
@@ -134,9 +134,12 @@ const UserPatternPage = () => {
                         scales: {
                             x: {
                                 grid: {display: false},
-                                beginAtZero: true }, // 0부터 시작
-                            y: { display: false,
-                                 reverse: false }, // 아래에서 위로 올라가도록 설정
+                                beginAtZero: true
+                            }, // 0부터 시작
+                            y: {
+                                display: false,
+                                reverse: false
+                            }, // 아래에서 위로 올라가도록 설정
                         },
                         layout: {
                             padding: {
@@ -148,7 +151,7 @@ const UserPatternPage = () => {
                 />
                 <div className="average-spending">
                     최근 6개월 평균 지출:{" "}
-                    {(monthlySpendingData.reduce((acc, cur) => acc + cur, 0) / monthlySpendingLabels.length)} 원
+                    {Math.floor(monthlySpendingData.reduce((acc, cur) => acc + cur, 0) / monthlySpendingLabels.length)} 원
                 </div>
             </div>
 

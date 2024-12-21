@@ -44,16 +44,21 @@ const SummaryPage = () => {
         await fetchUserInfo(navigate); // 유저 정보 가져오기
         await fetchTransactions(); // 거래 내역 가져오기
         setIsLoading(false); // 로딩 완료
-
-        const mostFrequentCategory = getMostFrequentCategory();
-        setTopCategory(mostFrequentCategory);
       } catch (error) {
         console.error("데이터 로드 중 오류 발생:", error);
         setIsLoading(false); // 로딩 완료
       }
     };
     fetchData();
-  }, [fetchUserInfo, fetchTransactions]);
+  }, [fetchUserInfo, fetchTransactions,navigate]);
+
+  // 거래 내역 변경 시 카테고리 계산
+  useEffect(() => {
+    if (transactions.length > 0) {
+      const mostFrequentCategory = getMostFrequentCategory();
+      setTopCategory(mostFrequentCategory);
+    }
+  }, [transactions]);
 
   if (isLoading) {
     return <div>로딩중...</div>;
@@ -103,18 +108,20 @@ const SummaryPage = () => {
       </div>
 
       <div className="bottom-container">
-        <div className="recent-transactions"
-             onClick={() => navigate("/main/calendar/expenses")}>
+        <div className="recent-transactions" onClick={() => navigate("/main/calendar/expenses")}>
           <h3>최근 내역</h3>
           <ul>
-            {transactions.slice(0, 5).map((transaction, index) => (
-                <li key={index}>
-                  <span><RiMoneyDollarCircleFill size={28}/></span>
-                  <span>{transaction.amount.toLocaleString()} 원</span>
-                <span>{transaction.type}</span>
-                <span>{transaction.udate}</span>
-              </li>
-            ))}
+            {transactions
+                .sort((a, b) => new Date(b.udate) - new Date(a.udate)) // 날짜 기준 내림차순 정렬
+                .slice(0, 5) // 최근 5개 거래만 표시
+                .map((transaction, index) => (
+                    <li key={index}>
+                      <span><RiMoneyDollarCircleFill size={28}/></span>
+                      <span>{transaction.amount.toLocaleString()} 원</span>
+                      <span>{transaction.type}</span>
+                      <span>{transaction.udate}</span>
+                    </li>
+                ))}
           </ul>
         </div>
         <div className="total-spent">

@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ba69bb2d-2820-4da4-87b4-ea76299f328f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/pages/Calendar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/Calendar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/pages/Summary.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/Summary.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/pages/UserEdit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/UserEdit.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/pages/UserPattern.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/UserPattern.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/pages/UserScore.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/UserScore.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/store/financeStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/store/financeStore.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stsproject/controller/HistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stsproject/controller/HistoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stsproject/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stsproject/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stsproject/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stsproject/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/stsproject/config/WebConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/stsproject/config/WebConfig.class" afterDir="false" />
@@ -189,7 +189,7 @@
       <workItem from="1734689695408" duration="160000" />
       <workItem from="1734689863760" duration="3588000" />
       <workItem from="1734701324429" duration="10665000" />
-      <workItem from="1734717576518" duration="4247000" />
+      <workItem from="1734717576518" duration="9160000" />
     </task>
     <servers />
   </component>
@@ -217,6 +217,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/stsproject/controller/TransactionController.java</url>
           <line>85</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/stsproject/controller/UserController.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/stsproject/entity/Transactions.java</url>

@@ -26,12 +26,10 @@ public class HistoryController {
     @GetMapping("/user/{id}")
     public ResponseEntity<List<history>> getHistoriesByUserId(@PathVariable String id) {
         List<history> histories = historyService.getHistoriesByUserId(id);
-        System.out.println("Fetched histories for user ID: " + id);
         histories.forEach(System.out::println);
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             String json = objectMapper.writeValueAsString(histories);
-            System.out.println("Serialized JSON: " + json);
         } catch (Exception e) {
             e.printStackTrace();
         }

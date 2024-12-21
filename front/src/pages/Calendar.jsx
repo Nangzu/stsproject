@@ -14,8 +14,6 @@ const CalendarPage = () => {
     const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
     const { //zustand 스토어 써보기
         transactions =[],
-        incomeTotal,
-        expenseTotal,
         setTransactions,
         fetchTransactions,
         addTransaction,
@@ -24,10 +22,10 @@ const CalendarPage = () => {
     } = useFinanceStore();
 
 
-    useEffect(() => {
+    //날짜 이동시 수정창 닫  기
+    useEffect( () => {
         fetchTransactions();
     }, [fetchTransactions]);
-
 
     //가져온 거래내역 날짜로 그룹화
     useEffect(() => {
@@ -80,6 +78,7 @@ const CalendarPage = () => {
             alert("날짜를 먼저 선택해주세요.");
             return;
         }
+
         // 선택된 날짜에 이미 10개 이상의 상세정보가 있으면 더 이상 추가 X
         if ((detailsByDate[selectedDate] || []).length >= 10) {
             alert("한 날짜에 10개 이상의 상세정보를 추가할 수 없습니다.");
@@ -92,15 +91,17 @@ const CalendarPage = () => {
             category: "",
             description: "",
             udate: selectedDate };
+
+
+
         setDetailsByDate((prevDetails) => {
             const updatedDetails = { ...prevDetails };
-            // 해당 날짜에 새로운 상세정보 추가
             if (!updatedDetails[selectedDate]) updatedDetails[selectedDate] = [];
             updatedDetails[selectedDate].push(newDetail);
 
             return updatedDetails;
         });
-        groupTransactions();
+        setSelectedDate(selectedDate);
     };
 
     const toggleDetailExpand = (index) => {
@@ -133,28 +134,36 @@ const CalendarPage = () => {
 
 
         try {
+            console.log(detail.id)
             if (detail.id) {
                 await axios.put(`http://localhost:8080/api/transactions/${detail.id}`, updatedDetail, {
                     withCredentials: true,
                 });
                 updateTransaction(updatedDetail);
+                await fetchTransactions();
 
             } else {
                 const response = await axios.post("http://localhost:8080/api/transactions", updatedDetail, {
                     withCredentials: true, // 세션/쿠키를 함께 전송
                 });
+                console.log(response.data);  // 응답 데이터를 로그로 출력해 확인
+                console.log(updatedDetail.id);
+                console.log(response.data.id);
                 updatedDetail.id = response.data.id;
                 addTransaction(updatedDetail);
+                await fetchTransactions();
 
             }
+
             setDetailsByDate((prevDetails) => {
                 const updatedDetails = { ...prevDetails };
+                if (!updatedDetails[selectedDate]) updatedDetails[selectedDate] = [];
                 updatedDetails[selectedDate] = updatedDetails[selectedDate].map((d, i) =>
                     i === index ? updatedDetail : d
                 );
                 return updatedDetails;
             });
-            groupTransactions();
+
             alert("저장되었습니다.");
         } catch (error) {
             console.error("저장 중 오류 발생:", error);
@@ -167,6 +176,7 @@ const CalendarPage = () => {
     const removeDetail = async (index) => {
         if (!selectedDate) return;
         const detail = detailsByDate[selectedDate][index];
+        console.log(detail.id)
         if (!detail || !detail.id) return; // ID가 없는 경우 방어 코드
 
         try {
@@ -174,15 +184,17 @@ const CalendarPage = () => {
             await axios.delete(`http://localhost:8080/api/transactions/${detail.id}`, {
                 withCredentials: true, // 세션/쿠키를 함께 전송
             });
-            alert("삭제되었습니다.");
+
             removeTransaction(detail.id);
+            alert("삭제되었습니다.");
 
             // 프론트엔드 상태 업데이트
-            setDetailsByDate((prevDetails) => ({
-                ...prevDetails,
-                [selectedDate]: prevDetails[selectedDate].filter((_, i) => i !== index),
-            }));
-            groupTransactions();
+            setDetailsByDate((prevDetails) => {
+                const updatedDetails = { ...prevDetails };
+                updatedDetails[selectedDate] = updatedDetails[selectedDate].filter((_, i) => i !== index);
+                return updatedDetails;
+            });
+
         } catch (error) {
             console.error("삭제 중 오류 발생:", error);
             alert("삭제에 실패했습니다.");

@@ -28,14 +28,14 @@ const useFinanceStore = create((set) => ({
             });
             const transactions = response.data;
 
-            // 상태 업데이트 및 콘솔 출력
+            // 상태 업데이트
             set({ transactions });
 
         } catch (error) {
             console.error("거래정보 불러오기 실패", error);
         }
     },
-    addTransaction: (transaction) =>
+    addTransaction: async  (transaction) =>
         set((state) => ({
             transactions: [...state.transactions, transaction],
         })),

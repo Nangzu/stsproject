@@ -41,7 +41,7 @@ const UserScorePage = () => {
                         labels={["Score", "Remaining"]}
                         colors={["#FF9999", "#DDDDDD"]}
                         title="1등급"
-                        centerText={`${score}점`} //이거 null이면 0점띄우기
+                        centerText={`${score || 0}점`} //이거 null이면 0점띄우기
                     />
                 </div>
                 <form>
