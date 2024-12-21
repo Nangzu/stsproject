@@ -26,6 +26,7 @@ public class Users {
     private String pw;
     private String name;
     private BigDecimal score; // NUMBER(5,2)와 매핑
+    private String salt;
 
     public String getId() {
         return id;
@@ -58,6 +59,10 @@ public class Users {
     public void setScore(BigDecimal score) {
         this.score = score;
     }
+
+    public String getSalt() {return salt;}
+
+    public void setSalt(String salt) {this.salt = salt;}
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Transactions> transactions; // 연결된 거래 내역
