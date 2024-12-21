@@ -3,6 +3,7 @@ package com.example.stsproject.controller;
 import com.example.stsproject.entity.Users;
 import com.example.stsproject.repository.UserRepository;
 
+import com.example.stsproject.utils.Encrypt;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 import lombok.extern.slf4j.Slf4j;
+import java.security.NoSuchAlgorithmException;
 
 @Slf4j
 @RequestMapping("/api")
@@ -77,11 +79,22 @@ public class UserController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody Users user) {
+        // 아이디 중복 확인
         if (userRepository.findById(user.getId()).isPresent()) {
             return ResponseEntity.badRequest().body("Email already exists");
         }
 
+        // 비밀번호 암호화
+        String salt = new Encrypt().getSalt(); // 랜덤 Salt 생성
+        String encryptedPw = new Encrypt().getEncrypt(user.getPw(), salt); // Salt와 비밀번호를 합쳐 암호화
+
+        // 암호화된 비밀번호와 Salt 저장
+        user.setPw(encryptedPw);
+        user.setSalt(salt); // Salt를 데이터베이스에 저장
+
+        // 사용자 저장
         userRepository.save(user);
+
         return ResponseEntity.ok("Signup successful");
     }
 
@@ -100,12 +113,15 @@ public class UserController {
 
         Users user = optionalUser.get();
 
-        // 비밀번호 확인
-        if (!pw.equals(user.getPw())) {
+        // 저장된 Salt를 이용하여 입력한 비밀번호를 암호화
+        String encryptedInputPw = new Encrypt().getEncrypt(pw, user.getSalt());
+
+        // 비밀번호 비교
+        if (!encryptedInputPw.equals(user.getPw())) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid ID or password");
         }
 
-        // 세션에 정보 저장
+        // 세션에 사용자 정보 저장
         session.setAttribute("id", id);
         session.setAttribute("name", user.getName());
 
