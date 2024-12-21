@@ -162,5 +162,32 @@ public class UserController {
         return ResponseEntity.ok("Profile updated successfully");
     }
 
+    @DeleteMapping("/deleteAccount")
+    public ResponseEntity<?> deleteAccount(HttpSession session) {
+        // 세션에서 사용자 ID 확인
+        String id = (String) session.getAttribute("id");
+
+        // 로그인 여부 확인
+        if (id == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login required");
+        }
+
+        // 사용자 조회
+        Optional<Users> optionalUser = userRepository.findById(id);
+
+        if (optionalUser.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+
+        // 사용자 삭제
+        userRepository.deleteById(id);
+
+        // 세션 무효화
+        session.invalidate();
+
+        // 성공 메시지 반환
+        return ResponseEntity.ok("Account deleted successfully");
+    }
+
 
 }
